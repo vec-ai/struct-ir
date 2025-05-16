@@ -1,0 +1,3323 @@
+{
+    "product_search": {
+        "common_fields": {
+            "product_id": {
+                "key_name": "product_id",
+                "data_type": "string",
+                "description": "A unique identifier for the product being searched."
+            },
+            "product_name": {
+                "key_name": "product_name",
+                "data_type": "string",
+                "description": "The name of the product being searched."
+            },
+            "brand": {
+                "key_name": "brand",
+                "data_type": "string",
+                "description": "The brand associated with the product."
+            },
+            "category": {
+                "key_name": "category",
+                "data_type": "string",
+                "description": "The category under which the product is classified."
+            },
+            "price": {
+                "key_name": "price",
+                "data_type": "float",
+                "description": "The price of the product."
+            },
+            "availability": {
+                "key_name": "availability",
+                "data_type": "boolean",
+                "description": "Indicates if the product is currently available for purchase."
+            },
+            "rating": {
+                "key_name": "rating",
+                "data_type": "float",
+                "description": "The average user rating of the product, typically on a scale from 0 to 5."
+            },
+            "reviews": {
+                "key_name": "reviews",
+                "data_type": "array<object>",
+                "description": "A collection of user reviews associated with the product, where each object contains details like review_text and reviewer_name."
+            },
+            "release_date": {
+                "key_name": "release_date",
+                "data_type": "date",
+                "description": "The date when the product was released or first made available."
+            },
+            "attributes": {
+                "key_name": "attributes",
+                "data_type": "object",
+                "description": "Additional attributes related to the product, such as dimensions, color, and model number."
+            }
+        },
+        "schemas": {
+            "electronics_sear": {
+                "battery_life": {
+                    "key_name": "battery_life",
+                    "data_type": "integer",
+                    "description": "The battery life of the electronic item in hours."
+                },
+                "screen_size": {
+                    "key_name": "screen_size",
+                    "data_type": "float",
+                    "description": "The size of the electronic item's screen in inches."
+                },
+                "operating_system": {
+                    "key_name": "operating_system",
+                    "data_type": "string",
+                    "description": "The operating system used by the electronic item."
+                },
+                "connectivity_options": {
+                    "key_name": "connectivity_options",
+                    "data_type": "array<string>",
+                    "description": "List of connectivity options supported by the electronic item such as Wi-Fi, Bluetooth, etc."
+                },
+                "warranty_period": {
+                    "key_name": "warranty_period",
+                    "data_type": "integer",
+                    "description": "Warranty period in months."
+                }
+            },
+            "fashion_search": {
+                "material": {
+                    "key_name": "material",
+                    "data_type": "string",
+                    "description": "The fabric or material that the clothing item is made from."
+                },
+                "size": {
+                    "key_name": "size",
+                    "data_type": "string",
+                    "description": "The size of the clothing item, such as S, M, L, XL."
+                },
+                "color": {
+                    "key_name": "color",
+                    "data_type": "string",
+                    "description": "The color of the fashion product."
+                },
+                "pattern": {
+                    "key_name": "pattern",
+                    "data_type": "string",
+                    "description": "The pattern or design style of the fashion item, such as plaid, striped, solid."
+                },
+                "care_instructions": {
+                    "key_name": "care_instructions",
+                    "data_type": "string",
+                    "description": "Special care instructions regarding how to handle and wash the fashion item."
+                }
+            },
+            "grocery_search": {
+                "expiration_date": {
+                    "key_name": "expiration_date",
+                    "data_type": "date",
+                    "description": "The expiration date of the grocery item."
+                },
+                "weight": {
+                    "key_name": "weight",
+                    "data_type": "float",
+                    "description": "Weight of the grocery product in kilograms."
+                },
+                "origin": {
+                    "key_name": "origin",
+                    "data_type": "string",
+                    "description": "The country or region from which the grocery product originates."
+                },
+                "organic": {
+                    "key_name": "organic",
+                    "data_type": "boolean",
+                    "description": "Indicates whether the grocery item is organic."
+                }
+            },
+            "home_appliances_": {
+                "power_consumption": {
+                    "key_name": "power_consumption",
+                    "data_type": "float",
+                    "description": "Power consumption of the appliance in watts."
+                },
+                "dimensions": {
+                    "key_name": "dimensions",
+                    "data_type": "object",
+                    "description": "Physical dimensions of the appliance including height, width, and depth."
+                },
+                "features": {
+                    "key_name": "features",
+                    "data_type": "array<string>",
+                    "description": "Special features offered by the appliance such as energy-saving, smart connectivity."
+                }
+            },
+            "automotive_searc": {
+                "engine_type": {
+                    "key_name": "engine_type",
+                    "data_type": "string",
+                    "description": "Type of engine used in the automotive product, such as petrol, diesel, electric."
+                },
+                "vehicle_type": {
+                    "key_name": "vehicle_type",
+                    "data_type": "string",
+                    "description": "The type of vehicle such as sedan, SUV, truck, etc."
+                },
+                "fuel_efficiency": {
+                    "key_name": "fuel_efficiency",
+                    "data_type": "float",
+                    "description": "Fuel efficiency of the automobile in miles per gallon."
+                },
+                "seat_capacity": {
+                    "key_name": "seat_capacity",
+                    "data_type": "integer",
+                    "description": "Number of seats available in the automobile."
+                }
+            },
+            "beauty_products_": {
+                "skin_type_compatibility": {
+                    "key_name": "skin_type_compatibility",
+                    "data_type": "array<string>",
+                    "description": "List of compatible skin types such as dry, oily, sensitive."
+                },
+                "ingredients": {
+                    "key_name": "ingredients",
+                    "data_type": "array<string>",
+                    "description": "List of main ingredients used in the beauty product."
+                },
+                "application_area": {
+                    "key_name": "application_area",
+                    "data_type": "string",
+                    "description": "Area of application for the beauty product, such as face, body, hair."
+                }
+            },
+            "health_products_": {
+                "dosage_form": {
+                    "key_name": "dosage_form",
+                    "data_type": "string",
+                    "description": "Form in which the health product is administered, such as tablet, liquid."
+                },
+                "active_ingredients": {
+                    "key_name": "active_ingredients",
+                    "data_type": "array<string>",
+                    "description": "List of active ingredients in the health product."
+                },
+                "health_benefits": {
+                    "key_name": "health_benefits",
+                    "data_type": "array<string>",
+                    "description": "Potential health benefits offered by the product."
+                },
+                "usage_instructions": {
+                    "key_name": "usage_instructions",
+                    "data_type": "string",
+                    "description": "Instructions for using the health product."
+                }
+            },
+            "sports_equipment": {
+                "material_type": {
+                    "key_name": "material_type",
+                    "data_type": "string",
+                    "description": "Type of material used for the sports equipment, such as leather, metal."
+                },
+                "sport_type": {
+                    "key_name": "sport_type",
+                    "data_type": "string",
+                    "description": "Type of sport the equipment is designed for, such as football, tennis."
+                },
+                "dimensions": {
+                    "key_name": "dimensions",
+                    "data_type": "object",
+                    "description": "Measurements specifying the size or capacity of the sports equipment."
+                }
+            },
+            "toys_and_games_s": {
+                "age_group": {
+                    "key_name": "age_group",
+                    "data_type": "string",
+                    "description": "Recommended age group for the toy or game."
+                },
+                "pieces_included": {
+                    "key_name": "pieces_included",
+                    "data_type": "integer",
+                    "description": "Number of pieces included in the toy or game set."
+                },
+                "theme": {
+                    "key_name": "theme",
+                    "data_type": "string",
+                    "description": "Theme or motif of the toy or game, such as superhero, educational."
+                }
+            },
+            "books_search": {
+                "author": {
+                    "key_name": "author",
+                    "data_type": "string",
+                    "description": "The author of the book."
+                },
+                "publisher": {
+                    "key_name": "publisher",
+                    "data_type": "string",
+                    "description": "The publisher of the book."
+                },
+                "publication_date": {
+                    "key_name": "publication_date",
+                    "data_type": "date",
+                    "description": "Date when the book was published."
+                },
+                "genre": {
+                    "key_name": "genre",
+                    "data_type": "array<string>",
+                    "description": "Genre or literary categories applicable to the book."
+                }
+            },
+            "music_and_videos": {
+                "artist": {
+                    "key_name": "artist",
+                    "data_type": "string",
+                    "description": "The main artist or band responsible for the music or video."
+                },
+                "length": {
+                    "key_name": "length",
+                    "data_type": "float",
+                    "description": "Length of the music or video in minutes."
+                },
+                "format": {
+                    "key_name": "format",
+                    "data_type": "string",
+                    "description": "The format of the music or video, such as MP3, MP4, Vinyl."
+                },
+                "album": {
+                    "key_name": "album",
+                    "data_type": "string",
+                    "description": "The name of the album (if applicable) that the music or video is part of."
+                }
+            },
+            "furniture_search": {
+                "material": {
+                    "key_name": "material",
+                    "data_type": "string",
+                    "description": "The type of material used to construct the furniture."
+                },
+                "dimensions": {
+                    "key_name": "dimensions",
+                    "data_type": "object",
+                    "description": "Measurements specifying height, width, and depth of the furniture piece."
+                },
+                "style": {
+                    "key_name": "style",
+                    "data_type": "string",
+                    "description": "The stylistic design category of the furniture, such as modern, vintage."
+                }
+            },
+            "office_supplies_": {
+                "quantity_per_pack": {
+                    "key_name": "quantity_per_pack",
+                    "data_type": "integer",
+                    "description": "The number of units included in a pack."
+                },
+                "material_type": {
+                    "key_name": "material_type",
+                    "data_type": "string",
+                    "description": "The type of material used in the office supply product."
+                },
+                "usage": {
+                    "key_name": "usage",
+                    "data_type": "string",
+                    "description": "Common uses or applications for the office supply product."
+                }
+            },
+            "pet_supplies_sea": {
+                "pet_type": {
+                    "key_name": "pet_type",
+                    "data_type": "string",
+                    "description": "Type of pet that the supply is intended for, such as dog, cat, bird."
+                },
+                "ingredients": {
+                    "key_name": "ingredients",
+                    "data_type": "array<string>",
+                    "description": "List of ingredients if the supply is consumable, like pet food."
+                },
+                "weight": {
+                    "key_name": "weight",
+                    "data_type": "float",
+                    "description": "Weight of the pet supply. (if applicable)"
+                }
+            },
+            "baby_products_se": {
+                "age_recommendation": {
+                    "key_name": "age_recommendation",
+                    "data_type": "string",
+                    "description": "Recommended age group for the baby product."
+                },
+                "safety_certifications": {
+                    "key_name": "safety_certifications",
+                    "data_type": "array<string>",
+                    "description": "List of certifications ensuring the product's safety standards."
+                },
+                "material": {
+                    "key_name": "material",
+                    "data_type": "string",
+                    "description": "The fabric or material used in making the baby product."
+                }
+            },
+            "tools_and_hardwa": {
+                "tool_type": {
+                    "key_name": "tool_type",
+                    "data_type": "string",
+                    "description": "Type of tool or hardware product, such as hammer, screwdriver."
+                },
+                "material": {
+                    "key_name": "material",
+                    "data_type": "string",
+                    "description": "Material used in constructing the tool or hardware."
+                },
+                "weight": {
+                    "key_name": "weight",
+                    "data_type": "float",
+                    "description": "Weight of the tool or hardware product."
+                },
+                "dimensions": {
+                    "key_name": "dimensions",
+                    "data_type": "object",
+                    "description": "Physical dimensions specifying size details of the tool."
+                }
+            },
+            "garden_supplies_": {
+                "plant_type": {
+                    "key_name": "plant_type",
+                    "data_type": "string",
+                    "description": "The type of plant the supply is suited for."
+                },
+                "package_content": {
+                    "key_name": "package_content",
+                    "data_type": "array<string>",
+                    "description": "Contents included within the garden supply package."
+                },
+                "eco_rating": {
+                    "key_name": "eco_rating",
+                    "data_type": "integer",
+                    "description": "Environmental rating of the garden supply product."
+                }
+            },
+            "art_and_craft_su": {
+                "color_options": {
+                    "key_name": "color_options",
+                    "data_type": "array<string>",
+                    "description": "Available color options for the art and craft supply."
+                },
+                "set_includes": {
+                    "key_name": "set_includes",
+                    "data_type": "array<string>",
+                    "description": "Items included in the art and craft supply set."
+                },
+                "skill_level": {
+                    "key_name": "skill_level",
+                    "data_type": "string",
+                    "description": "Recommended skill level for using the art and craft supply, such as beginner, intermediate."
+                }
+            },
+            "software_product": {
+                "platforms_supported": {
+                    "key_name": "platforms_supported",
+                    "data_type": "array<string>",
+                    "description": "Devices or operating systems that the software product supports."
+                },
+                "version": {
+                    "key_name": "version",
+                    "data_type": "string",
+                    "description": "The current version of the software product."
+                },
+                "license_type": {
+                    "key_name": "license_type",
+                    "data_type": "string",
+                    "description": "Type of license for the software, such as perpetual, subscription."
+                }
+            },
+            "mobile_devices_s": {
+                "screen_resolution": {
+                    "key_name": "screen_resolution",
+                    "data_type": "string",
+                    "description": "The resolution of the mobile device's screen."
+                },
+                "camera_quality": {
+                    "key_name": "camera_quality",
+                    "data_type": "object",
+                    "description": "Specifications related to the camera quality such as megapixels."
+                },
+                "battery_capacity": {
+                    "key_name": "battery_capacity",
+                    "data_type": "integer",
+                    "description": "Battery capacity of the mobile device in milliamp hours (mAh)."
+                }
+            },
+            "camera_search": {
+                "sensor_type": {
+                    "key_name": "sensor_type",
+                    "data_type": "string",
+                    "description": "The type of sensor used in the camera, such as CMOS, CCD."
+                },
+                "resolution": {
+                    "key_name": "resolution",
+                    "data_type": "string",
+                    "description": "Maximum resolution supported by the camera."
+                },
+                "lens_type": {
+                    "key_name": "lens_type",
+                    "data_type": "string",
+                    "description": "Type of lens provided with the camera."
+                },
+                "flash_mode": {
+                    "key_name": "flash_mode",
+                    "data_type": "string",
+                    "description": "Modes of flash operation available in the camera."
+                }
+            },
+            "smart_devices_se": {
+                "device_connectivity": {
+                    "key_name": "device_connectivity",
+                    "data_type": "array<string>",
+                    "description": "Connectivity options for the smart device, such as Wi-Fi, ZigBee."
+                },
+                "compatible_apps": {
+                    "key_name": "compatible_apps",
+                    "data_type": "array<string>",
+                    "description": "Applications compatible with the smart device."
+                },
+                "power_source": {
+                    "key_name": "power_source",
+                    "data_type": "string",
+                    "description": "Power source information indicating how the device is powered."
+                }
+            },
+            "junior_wearables": {
+                "size": {
+                    "key_name": "size",
+                    "data_type": "string",
+                    "description": "Size of the wearable suitable for juniors, such as XS, S, M."
+                },
+                "materials_used": {
+                    "key_name": "materials_used",
+                    "data_type": "array<string>",
+                    "description": "Materials used to construct the wearable item."
+                },
+                "features": {
+                    "key_name": "features",
+                    "data_type": "array<string>",
+                    "description": "Features included in the wearable, such as water-resistant, UV protection."
+                }
+            },
+            "medical_supplies": {
+                "sterilization_standard": {
+                    "key_name": "sterilization_standard",
+                    "data_type": "string",
+                    "description": "Sterilization standard applicable to the medical supply product."
+                },
+                "quantity_per_container": {
+                    "key_name": "quantity_per_container",
+                    "data_type": "integer",
+                    "description": "Amount of supplies contained per package."
+                },
+                "usage": {
+                    "key_name": "usage",
+                    "data_type": "string",
+                    "description": "Intended use or application for the medical supply."
+                }
+            },
+            "hotel_and_travel": {
+                "location": {
+                    "key_name": "location",
+                    "data_type": "string",
+                    "description": "Geographical location of the hotel or travel destination."
+                },
+                "room_types": {
+                    "key_name": "room_types",
+                    "data_type": "array<string>",
+                    "description": "Available types of rooms in the hotel."
+                },
+                "amenities": {
+                    "key_name": "amenities",
+                    "data_type": "array<string>",
+                    "description": "Amenities offered by the hotel or travel service."
+                },
+                "check_in_date": {
+                    "key_name": "check_in_date",
+                    "data_type": "date",
+                    "description": "Date when check-in is possible."
+                }
+            },
+            "restaurant_searc": {
+                "cuisine_type": {
+                    "key_name": "cuisine_type",
+                    "data_type": "string",
+                    "description": "Type of cuisine offered by the restaurant."
+                },
+                "menu_items": {
+                    "key_name": "menu_items",
+                    "data_type": "array<object>",
+                    "description": "List of currently available menu items, where each object includes name and price."
+                },
+                "opening_hours": {
+                    "key_name": "opening_hours",
+                    "data_type": "object",
+                    "description": "Times at which the restaurant is open, usually specified in hours."
+                },
+                "location": {
+                    "key_name": "location",
+                    "data_type": "string",
+                    "description": "Physical location of the restaurant."
+                }
+            },
+            "gift_items_searc": {
+                "occasion_type": {
+                    "key_name": "occasion_type",
+                    "data_type": "string",
+                    "description": "Occasion for which the gift item is suitable, such as birthday, anniversary."
+                },
+                "gift_set_included": {
+                    "key_name": "gift_set_included",
+                    "data_type": "array<string>",
+                    "description": "Items included in a gift set organized around a theme."
+                },
+                "customizable_option": {
+                    "key_name": "customizable_option",
+                    "data_type": "boolean",
+                    "description": "Indicates if the gift item is customizable."
+                }
+            },
+            "watches_search": {
+                "dial_shape": {
+                    "key_name": "dial_shape",
+                    "data_type": "string",
+                    "description": "Shape of the watch dial, such as round, square."
+                },
+                "band_material": {
+                    "key_name": "band_material",
+                    "data_type": "string",
+                    "description": "Type of material used for the watch band."
+                },
+                "water_resistance_depth": {
+                    "key_name": "water_resistance_depth",
+                    "data_type": "integer",
+                    "description": "Depth of water resistance the watch can withstand, measured in meters."
+                },
+                "movement_type": {
+                    "key_name": "movement_type",
+                    "data_type": "string",
+                    "description": "Type of movement used in the watch, such as automatic, quartz."
+                }
+            },
+            "jewelry_search": {
+                "material_type": {
+                    "key_name": "material_type",
+                    "data_type": "string",
+                    "description": "Type of material the jewelry is made of, such as gold, silver."
+                },
+                "gemstones": {
+                    "key_name": "gemstones",
+                    "data_type": "array<object>",
+                    "description": "List of gemstones included in the jewelry, with each object detailing gem type and carat."
+                },
+                "design_period": {
+                    "key_name": "design_period",
+                    "data_type": "string",
+                    "description": "Time period or era the jewelry design is inspired by, such as antique, contemporary."
+                }
+            },
+            "real_estate_sear": {
+                "property_type": {
+                    "key_name": "property_type",
+                    "data_type": "string",
+                    "description": "Type of real estate property, such as residential, commercial."
+                },
+                "location": {
+                    "key_name": "location",
+                    "data_type": "string",
+                    "description": "Physical location of the property."
+                },
+                "area_size": {
+                    "key_name": "area_size",
+                    "data_type": "float",
+                    "description": "Total area of the property in square meters."
+                },
+                "number_of_bedrooms": {
+                    "key_name": "number_of_bedrooms",
+                    "data_type": "integer",
+                    "description": "Number of bedrooms available within the property."
+                }
+            }
+        }
+    },
+    "human_resources": {
+        "schemas": {
+            "employee_informa": {
+                "employee_id": {
+                    "key_name": "employee_id",
+                    "data_type": "string",
+                    "description": "A unique identifier assigned to each employee."
+                },
+                "first_name": {
+                    "key_name": "first_name",
+                    "data_type": "string",
+                    "description": "The first name of the employee."
+                },
+                "last_name": {
+                    "key_name": "last_name",
+                    "data_type": "string",
+                    "description": "The last name of the employee."
+                },
+                "date_of_birth": {
+                    "key_name": "date_of_birth",
+                    "data_type": "date",
+                    "description": "The birth date of the employee in 'YYYY-MM-DD' format."
+                },
+                "hire_date": {
+                    "key_name": "hire_date",
+                    "data_type": "date",
+                    "description": "The date on which the employee was hired."
+                },
+                "job_title": {
+                    "key_name": "job_title",
+                    "data_type": "string",
+                    "description": "The job title or position held by the employee."
+                },
+                "department": {
+                    "key_name": "department",
+                    "data_type": "string",
+                    "description": "The department within the company where the employee works."
+                },
+                "email": {
+                    "key_name": "email",
+                    "data_type": "string",
+                    "description": "The email address of the employee."
+                },
+                "phone_number": {
+                    "key_name": "phone_number",
+                    "data_type": "string",
+                    "description": "The contact phone number of the employee."
+                },
+                "address": {
+                    "key_name": "address",
+                    "data_type": "string",
+                    "description": "The residential address of the employee."
+                }
+            },
+            "performance_revi": {
+                "review_id": {
+                    "key_name": "review_id",
+                    "data_type": "string",
+                    "description": "A unique identifier assigned to each performance review."
+                },
+                "employee_id": {
+                    "key_name": "employee_id",
+                    "data_type": "string",
+                    "description": "A unique identifier assigned to each employee."
+                },
+                "review_date": {
+                    "key_name": "review_date",
+                    "data_type": "date",
+                    "description": "The date on which the performance review was conducted."
+                },
+                "reviewer_name": {
+                    "key_name": "reviewer_name",
+                    "data_type": "string",
+                    "description": "The name of the person who conducted the review."
+                },
+                "performance_rating": {
+                    "key_name": "performance_rating",
+                    "data_type": "integer",
+                    "description": "The performance rating given to the employee, typically on a scale of 1 to 5."
+                },
+                "comments": {
+                    "key_name": "comments",
+                    "data_type": "string",
+                    "description": "Additional comments or feedback provided during the review."
+                },
+                "goals_set": {
+                    "key_name": "goals_set",
+                    "data_type": "array<object>",
+                    "description": "A list of goals set for the employee to achieve, each goal described as an object."
+                }
+            },
+            "recruitment:_inf": {
+                "job_posting_id": {
+                    "key_name": "job_posting_id",
+                    "data_type": "string",
+                    "description": "A unique identifier assigned to each job posting."
+                },
+                "job_title": {
+                    "key_name": "job_title",
+                    "data_type": "string",
+                    "description": "The title of the job position being recruited for."
+                },
+                "department": {
+                    "key_name": "department",
+                    "data_type": "string",
+                    "description": "The department within the company where the job position is available."
+                },
+                "posting_date": {
+                    "key_name": "posting_date",
+                    "data_type": "date",
+                    "description": "The date on which the job posting was published."
+                },
+                "application_deadline": {
+                    "key_name": "application_deadline",
+                    "data_type": "date",
+                    "description": "The deadline for submitting job applications."
+                },
+                "number_of_positions": {
+                    "key_name": "number_of_positions",
+                    "data_type": "integer",
+                    "description": "The number of open positions available for the job."
+                },
+                "required_experience": {
+                    "key_name": "required_experience",
+                    "data_type": "string",
+                    "description": "The amount of experience required for the job position."
+                },
+                "skills_required": {
+                    "key_name": "skills_required",
+                    "data_type": "array<string>",
+                    "description": "A list of skills required for the job position."
+                },
+                "location": {
+                    "key_name": "location",
+                    "data_type": "string",
+                    "description": "The location where the job position is based."
+                },
+                "contact_email": {
+                    "key_name": "contact_email",
+                    "data_type": "string",
+                    "description": "The email address to contact for inquiries about the job position."
+                }
+            },
+            "training_and_dev": {
+                "training_id": {
+                    "key_name": "training_id",
+                    "data_type": "string",
+                    "description": "A unique identifier assigned to each training program."
+                },
+                "employee_id": {
+                    "key_name": "employee_id",
+                    "data_type": "string",
+                    "description": "A unique identifier assigned to each employee."
+                },
+                "training_name": {
+                    "key_name": "training_name",
+                    "data_type": "string",
+                    "description": "The name of the training program."
+                },
+                "training_date": {
+                    "key_name": "training_date",
+                    "data_type": "date",
+                    "description": "The date on which the training program was conducted."
+                },
+                "duration_hours": {
+                    "key_name": "duration_hours",
+                    "data_type": "float",
+                    "description": "The duration of the training program in hours."
+                },
+                "trainer_name": {
+                    "key_name": "trainer_name",
+                    "data_type": "string",
+                    "description": "The name of the trainer who conducted the training program."
+                },
+                "skills_acquired": {
+                    "key_name": "skills_acquired",
+                    "data_type": "array<string>",
+                    "description": "A list of skills acquired by the employee through the training program."
+                },
+                "certification_awarded": {
+                    "key_name": "certification_awarded",
+                    "data_type": "boolean",
+                    "description": "Indicator of whether a certification was awarded upon completion of the training program."
+                }
+            },
+            "payroll:_financi": {
+                "payroll_id": {
+                    "key_name": "payroll_id",
+                    "data_type": "string",
+                    "description": "A unique identifier assigned to each payroll record."
+                },
+                "employee_id": {
+                    "key_name": "employee_id",
+                    "data_type": "string",
+                    "description": "A unique identifier assigned to each employee."
+                },
+                "payment_date": {
+                    "key_name": "payment_date",
+                    "data_type": "date",
+                    "description": "The date on which the payment was made."
+                },
+                "gross_salary": {
+                    "key_name": "gross_salary",
+                    "data_type": "float",
+                    "description": "The gross salary amount before deductions."
+                },
+                "tax_deduction": {
+                    "key_name": "tax_deduction",
+                    "data_type": "float",
+                    "description": "The amount deducted from the gross salary for taxes."
+                },
+                "net_salary": {
+                    "key_name": "net_salary",
+                    "data_type": "float",
+                    "description": "The net salary amount received by the employee after deductions."
+                },
+                "payment_method": {
+                    "key_name": "payment_method",
+                    "data_type": "string",
+                    "description": "The method used for the payment, e.g., direct deposit, check, etc."
+                },
+                "bank_account_details": {
+                    "key_name": "bank_account_details",
+                    "data_type": "object",
+                    "description": "Details of the bank account where the salary is deposited."
+                },
+                "bonus": {
+                    "key_name": "bonus",
+                    "data_type": "float",
+                    "description": "Bonus amount if any awarded to the employee."
+                }
+            },
+            "leave_management": {
+                "leave_id": {
+                    "key_name": "leave_id",
+                    "data_type": "string",
+                    "description": "A unique identifier assigned to each leave record."
+                },
+                "employee_id": {
+                    "key_name": "employee_id",
+                    "data_type": "string",
+                    "description": "A unique identifier assigned to each employee."
+                },
+                "leave_start_date": {
+                    "key_name": "leave_start_date",
+                    "data_type": "date",
+                    "description": "The start date of the leave."
+                },
+                "leave_end_date": {
+                    "key_name": "leave_end_date",
+                    "data_type": "date",
+                    "description": "The end date of the leave."
+                },
+                "leave_type": {
+                    "key_name": "leave_type",
+                    "data_type": "string",
+                    "description": "The type of leave taken, e.g., sick leave, vacation, etc."
+                },
+                "leave_reason": {
+                    "key_name": "leave_reason",
+                    "data_type": "string",
+                    "description": "The reason for taking the leave."
+                },
+                "leave_status": {
+                    "key_name": "leave_status",
+                    "data_type": "string",
+                    "description": "The current status of the leave, e.g., approved, pending, rejected."
+                }
+            },
+            "employee_benefit": {
+                "benefit_id": {
+                    "key_name": "benefit_id",
+                    "data_type": "string",
+                    "description": "A unique identifier assigned to each employee benefit."
+                },
+                "employee_id": {
+                    "key_name": "employee_id",
+                    "data_type": "string",
+                    "description": "A unique identifier assigned to each employee."
+                },
+                "benefit_type": {
+                    "key_name": "benefit_type",
+                    "data_type": "string",
+                    "description": "The type of benefit provided, e.g., health insurance, retirement plan, etc."
+                },
+                "benefit_details": {
+                    "key_name": "benefit_details",
+                    "data_type": "object",
+                    "description": "Details of the benefit provided."
+                },
+                "start_date": {
+                    "key_name": "start_date",
+                    "data_type": "date",
+                    "description": "The date on which the benefit started."
+                },
+                "end_date": {
+                    "key_name": "end_date",
+                    "data_type": "date",
+                    "description": "The date on which the benefit ended or is set to end."
+                },
+                "amount_covered": {
+                    "key_name": "amount_covered",
+                    "data_type": "float",
+                    "description": "The amount covered under the benefit."
+                }
+            },
+            "employee_feedbac": {
+                "feedback_id": {
+                    "key_name": "feedback_id",
+                    "data_type": "string",
+                    "description": "A unique identifier assigned to each feedback record."
+                },
+                "employee_id": {
+                    "key_name": "employee_id",
+                    "data_type": "string",
+                    "description": "A unique identifier assigned to each employee."
+                },
+                "feedback_date": {
+                    "key_name": "feedback_date",
+                    "data_type": "date",
+                    "description": "The date when the feedback was provided or received."
+                },
+                "feedback_provider": {
+                    "key_name": "feedback_provider",
+                    "data_type": "string",
+                    "description": "The name or identifier of the individual providing the feedback."
+                },
+                "feedback_type": {
+                    "key_name": "feedback_type",
+                    "data_type": "string",
+                    "description": "The type of feedback, e.g., formal, informal, etc."
+                },
+                "comments": {
+                    "key_name": "comments",
+                    "data_type": "string",
+                    "description": "The textual content of the feedback."
+                },
+                "rating": {
+                    "key_name": "rating",
+                    "data_type": "integer",
+                    "description": "A numerical rating associated with the feedback."
+                }
+            },
+            "time_tracking:_r": {
+                "time_entry_id": {
+                    "key_name": "time_entry_id",
+                    "data_type": "string",
+                    "description": "A unique identifier assigned to each time tracking entry."
+                },
+                "employee_id": {
+                    "key_name": "employee_id",
+                    "data_type": "string",
+                    "description": "A unique identifier assigned to each employee."
+                },
+                "clock_in_time": {
+                    "key_name": "clock_in_time",
+                    "data_type": "datetime",
+                    "description": "The date and time when the employee clocked in for work."
+                },
+                "clock_out_time": {
+                    "key_name": "clock_out_time",
+                    "data_type": "datetime",
+                    "description": "The date and time when the employee clocked out from work."
+                },
+                "total_hours_worked": {
+                    "key_name": "total_hours_worked",
+                    "data_type": "float",
+                    "description": "The total number of hours worked by the employee in a particular shift or day."
+                },
+                "overtime_hours": {
+                    "key_name": "overtime_hours",
+                    "data_type": "float",
+                    "description": "The number of overtime hours worked by the employee."
+                },
+                "project_code": {
+                    "key_name": "project_code",
+                    "data_type": "string",
+                    "description": "The code of the project the employee was working on during the recorded time."
+                }
+            },
+            "hr_policies:_doc": {
+                "policy_id": {
+                    "key_name": "policy_id",
+                    "data_type": "string",
+                    "description": "A unique identifier assigned to each HR policy."
+                },
+                "policy_title": {
+                    "key_name": "policy_title",
+                    "data_type": "string",
+                    "description": "The title of the HR policy."
+                },
+                "policy_description": {
+                    "key_name": "policy_description",
+                    "data_type": "string",
+                    "description": "The detailed description of the HR policy."
+                },
+                "effective_date": {
+                    "key_name": "effective_date",
+                    "data_type": "date",
+                    "description": "The date on which the policy becomes effective."
+                },
+                "last_updated": {
+                    "key_name": "last_updated",
+                    "data_type": "date",
+                    "description": "The date on which the policy was last updated."
+                },
+                "applicable_departments": {
+                    "key_name": "applicable_departments",
+                    "data_type": "array<string>",
+                    "description": "A list of departments to which the policy is applicable."
+                },
+                "policy_document_url": {
+                    "key_name": "policy_document_url",
+                    "data_type": "string",
+                    "description": "The URL link to the document detailing the HR policy."
+                }
+            }
+        }
+    },
+    "resume_search": {
+        "common_fields": {
+            "name": {
+                "key_name": "name",
+                "data_type": "string",
+                "description": "The full name of the individual associated with the resume."
+            },
+            "contact_information": {
+                "key_name": "contact_information",
+                "data_type": "object",
+                "description": "An object containing contact details such as email, phone number, and address."
+            },
+            "education": {
+                "key_name": "education",
+                "data_type": "array<object>",
+                "description": "An array of objects representing different educational qualifications and degrees obtained by the individual."
+            },
+            "experience": {
+                "key_name": "experience",
+                "data_type": "array<object>",
+                "description": "An array of objects detailing work experiences, roles, companies, and duration of employment."
+            },
+            "skills": {
+                "key_name": "skills",
+                "data_type": "array<string>",
+                "description": "A list of skills and expertise areas relevant to the person's capabilities and job roles."
+            },
+            "certifications": {
+                "key_name": "certifications",
+                "data_type": "array<string>",
+                "description": "A list of certifications and courses completed by the individual, supporting their expertise in specific areas."
+            },
+            "objective": {
+                "key_name": "objective",
+                "data_type": "string",
+                "description": "A brief statement outlining the individual's career goals and what they aim to achieve in a new position."
+            },
+            "languages": {
+                "key_name": "languages",
+                "data_type": "array<string>",
+                "description": "Languages spoken or written by the individual, indicating communication proficiency."
+            },
+            "portfolio_links": {
+                "key_name": "portfolio_links",
+                "data_type": "array<string>",
+                "description": "URLs to online portfolios or personal websites showcasing the individual's work."
+            },
+            "availability": {
+                "key_name": "availability",
+                "data_type": "date",
+                "description": "Date from which the individual is available to start the new role."
+            }
+        },
+        "schemas": {
+            "software_enginee": {
+                "technical_expertise": {
+                    "key_name": "technical_expertise",
+                    "data_type": "array<string>",
+                    "description": "A list of programming languages, frameworks, and tools the individual is proficient in."
+                },
+                "github_profile": {
+                    "key_name": "github_profile",
+                    "data_type": "string",
+                    "description": "URL to the individual's GitHub account showcasing software projects and code repositories."
+                },
+                "current_position": {
+                    "key_name": "current_position",
+                    "data_type": "string",
+                    "description": "The job title the individual currently holds."
+                },
+                "expected_salary": {
+                    "key_name": "expected_salary",
+                    "data_type": "integer",
+                    "description": "The expected salary the individual seeks, expressed in local currency."
+                },
+                "relevant_projects": {
+                    "key_name": "relevant_projects",
+                    "data_type": "array<object>",
+                    "description": "An array of objects detailing major projects the individual has participated in, including project descriptions and roles."
+                },
+                "linkedin_profile": {
+                    "key_name": "linkedin_profile",
+                    "data_type": "string",
+                    "description": "URL to the individual's LinkedIn profile providing professional details and network."
+                }
+            },
+            "data_science:_re": {
+                "data_analysis_tools": {
+                    "key_name": "data_analysis_tools",
+                    "data_type": "array<string>",
+                    "description": "A list of tools and software used for data analysis, such as Python, R, or Tableau."
+                },
+                "publications": {
+                    "key_name": "publications",
+                    "data_type": "array<object>",
+                    "description": "Academic or industry publications authored by the individual, with titles and links."
+                },
+                "machine_learning_algorithms": {
+                    "key_name": "machine_learning_algorithms",
+                    "data_type": "array<string>",
+                    "description": "A list of machine learning algorithms that the individual is skilled in implementing."
+                },
+                "data_sources_familiarity": {
+                    "key_name": "data_sources_familiarity",
+                    "data_type": "array<string>",
+                    "description": "Types of data sources the individual is experienced with, like SQL databases, APIs, or big data platforms."
+                },
+                "cloud_services": {
+                    "key_name": "cloud_services",
+                    "data_type": "array<string>",
+                    "description": "Cloud platforms and services the individual is proficient in for data processing and deployment, such as AWS, Azure, or GCP."
+                }
+            },
+            "project_manageme": {
+                "project_management_tools": {
+                    "key_name": "project_management_tools",
+                    "data_type": "array<string>",
+                    "description": "Tools used for managing projects, such as Asana, Trello, or Jira."
+                },
+                "certified_project_manager": {
+                    "key_name": "certified_project_manager",
+                    "data_type": "boolean",
+                    "description": "A boolean indicating if the individual holds a recognized project management certification like PMP."
+                },
+                "stakeholder_management": {
+                    "key_name": "stakeholder_management",
+                    "data_type": "string",
+                    "description": "Experience and strategies used for managing and engaging stakeholders effectively."
+                },
+                "budget_management": {
+                    "key_name": "budget_management",
+                    "data_type": "string",
+                    "description": "Skills and experience in planning and controlling the budget for projects."
+                },
+                "team_size_managed": {
+                    "key_name": "team_size_managed",
+                    "data_type": "integer",
+                    "description": "The average number of team members the individual has managed in projects."
+                },
+                "project_types_experience": {
+                    "key_name": "project_types_experience",
+                    "data_type": "array<string>",
+                    "description": "Different types of projects the individual has managed, such as IT, construction, or marketing."
+                }
+            },
+            "sales_&_marketin": {
+                "sales_targets_met": {
+                    "key_name": "sales_targets_met",
+                    "data_type": "integer",
+                    "description": "The number of sales targets achieved over a specified period."
+                },
+                "marketing_campaign_experience": {
+                    "key_name": "marketing_campaign_experience",
+                    "data_type": "array<object>",
+                    "description": "An array of objects detailing marketing campaigns worked on, including objectives, strategies, and outcomes."
+                },
+                "customer_relationship_management_tools": {
+                    "key_name": "customer_relationship_management_tools",
+                    "data_type": "array<string>",
+                    "description": "CRM tools used, such as Salesforce or HubSpot, for managing customer relationships."
+                },
+                "branding_experience": {
+                    "key_name": "branding_experience",
+                    "data_type": "string",
+                    "description": "Experience in creating and managing brand identities and messaging."
+                },
+                "digital_marketing_expertise": {
+                    "key_name": "digital_marketing_expertise",
+                    "data_type": "array<string>",
+                    "description": "Areas of expertise in digital marketing, such as SEO, PPC, or social media."
+                },
+                "market_research_methods": {
+                    "key_name": "market_research_methods",
+                    "data_type": "array<string>",
+                    "description": "Research methodologies employed for understanding market trends and consumer behavior."
+                }
+            },
+            "human_resources:": {
+                "recruitment_methods": {
+                    "key_name": "recruitment_methods",
+                    "data_type": "array<string>",
+                    "description": "Techniques and methods used for recruiting potential candidates."
+                },
+                "employee_engagement_strategies": {
+                    "key_name": "employee_engagement_strategies",
+                    "data_type": "string",
+                    "description": "Strategies implemented for improving employee engagement and satisfaction."
+                },
+                "hr_software_experience": {
+                    "key_name": "hr_software_experience",
+                    "data_type": "array<string>",
+                    "description": "HR management software used, such as HRIS or Payroll systems."
+                },
+                "organizational_planning_skills": {
+                    "key_name": "organizational_planning_skills",
+                    "data_type": "string",
+                    "description": "Skills in planning and structuring organizational frameworks and policies."
+                },
+                "conflict_resolution": {
+                    "key_name": "conflict_resolution",
+                    "data_type": "boolean",
+                    "description": "Indicates if the individual has formal training or experience in resolving workplace conflicts."
+                },
+                "training_programs_developed": {
+                    "key_name": "training_programs_developed",
+                    "data_type": "array<object>",
+                    "description": "An array of objects detailing employee training and development programs the individual has created."
+                }
+            },
+            "finance_&_accoun": {
+                "accounting_software_proficiency": {
+                    "key_name": "accounting_software_proficiency",
+                    "data_type": "array<string>",
+                    "description": "Software that the individual is proficient in, such as QuickBooks or SAP."
+                },
+                "financial_analysis_skills": {
+                    "key_name": "financial_analysis_skills",
+                    "data_type": "string",
+                    "description": "Skills in analyzing financial statements, trends, and metrics."
+                },
+                "budgeting_experience": {
+                    "key_name": "budgeting_experience",
+                    "data_type": "string",
+                    "description": "Experience in preparing and managing budgets within organizations."
+                },
+                "audit_experience": {
+                    "key_name": "audit_experience",
+                    "data_type": "boolean",
+                    "description": "Indicates whether the individual has experience conducting financial audits."
+                },
+                "certified_public_accountant": {
+                    "key_name": "certified_public_accountant",
+                    "data_type": "boolean",
+                    "description": "Indicates if the individual has obtained the CPA certification."
+                },
+                "investment_analysis": {
+                    "key_name": "investment_analysis",
+                    "data_type": "array<string>",
+                    "description": "Investment strategies and analysis methods the individual is proficient in."
+                }
+            },
+            "healthcare:_resu": {
+                "medical_specialization": {
+                    "key_name": "medical_specialization",
+                    "data_type": "string",
+                    "description": "Area of medicine the individual specializes in, such as cardiology or neurology."
+                },
+                "clinical_experience": {
+                    "key_name": "clinical_experience",
+                    "data_type": "string",
+                    "description": "Experience working in clinical settings with patients and medical teams."
+                },
+                "research_experience": {
+                    "key_name": "research_experience",
+                    "data_type": "string",
+                    "description": "Experience in conducting medical or healthcare-related research."
+                },
+                "certifications_and_licenses": {
+                    "key_name": "certifications_and_licenses",
+                    "data_type": "array<string>",
+                    "description": "Healthcare certifications and licenses held by the individual."
+                },
+                "patient_management_systems": {
+                    "key_name": "patient_management_systems",
+                    "data_type": "array<string>",
+                    "description": "Software and systems used for managing patient records and treatment plans."
+                },
+                "emergency_care_experience": {
+                    "key_name": "emergency_care_experience",
+                    "data_type": "boolean",
+                    "description": "Indicates if the individual has significant experience in emergency care settings."
+                }
+            },
+            "education_&_teac": {
+                "teaching_subjects": {
+                    "key_name": "teaching_subjects",
+                    "data_type": "array<string>",
+                    "description": "Subjects that the individual is qualified to teach at educational institutions."
+                },
+                "curriculum_development": {
+                    "key_name": "curriculum_development",
+                    "data_type": "string",
+                    "description": "Experience in designing and implementing educational curricula for students."
+                },
+                "student_engagement_strategies": {
+                    "key_name": "student_engagement_strategies",
+                    "data_type": "string",
+                    "description": "Techniques used to engage students and enhance learning experiences."
+                },
+                "educational_tools": {
+                    "key_name": "educational_tools",
+                    "data_type": "array<string>",
+                    "description": "Tools and software used for teaching, such as digital learning platforms or teaching aids."
+                },
+                "academic_administration_roles": {
+                    "key_name": "academic_administration_roles",
+                    "data_type": "array<string>",
+                    "description": "A list of administrative roles the individual has held in educational settings."
+                },
+                "published_works": {
+                    "key_name": "published_works",
+                    "data_type": "array<object>",
+                    "description": "Academic publications authored by the individual, relevant to education or teaching."
+                }
+            },
+            "graphic_design:_": {
+                "design_software_proficiency": {
+                    "key_name": "design_software_proficiency",
+                    "data_type": "array<string>",
+                    "description": "Graphic design software the individual is proficient in, such as Adobe Photoshop or Illustrator."
+                },
+                "portfolio_samples": {
+                    "key_name": "portfolio_samples",
+                    "data_type": "array<object>",
+                    "description": "An array of objects showcasing samples of the individual's design work along with descriptions."
+                },
+                "design_specialization": {
+                    "key_name": "design_specialization",
+                    "data_type": "string",
+                    "description": "The primary design focus or specialization, such as UI/UX or branding."
+                },
+                "creative_process": {
+                    "key_name": "creative_process",
+                    "data_type": "string",
+                    "description": "A description of the individual's creative process and approach to design projects."
+                },
+                "client_work_experience": {
+                    "key_name": "client_work_experience",
+                    "data_type": "string",
+                    "description": "Experience in collaborating with clients on design projects and meeting their needs."
+                },
+                "design_awards": {
+                    "key_name": "design_awards",
+                    "data_type": "array<string>",
+                    "description": "Awards and recognitions received for excellence in design and creativity."
+                }
+            },
+            "engineering:_res": {
+                "engineering_field": {
+                    "key_name": "engineering_field",
+                    "data_type": "string",
+                    "description": "Specific field of engineering, such as civil, mechanical, or electrical, that the individual specializes in."
+                },
+                "project_experience": {
+                    "key_name": "project_experience",
+                    "data_type": "array<object>",
+                    "description": "An array of objects detailing engineering projects undertaken, including scope, role, and impact."
+                },
+                "technical_skills": {
+                    "key_name": "technical_skills",
+                    "data_type": "array<string>",
+                    "description": "A list of technical skills relevant to engineering tasks and applications."
+                },
+                "certifications": {
+                    "key_name": "certifications",
+                    "data_type": "array<string>",
+                    "description": "Professional certifications acquired in the engineering field."
+                },
+                "research_and_development": {
+                    "key_name": "research_and_development",
+                    "data_type": "string",
+                    "description": "Experience in engineering research and development activities."
+                },
+                "standards_and_regulations_knowledge": {
+                    "key_name": "standards_and_regulations_knowledge",
+                    "data_type": "array<string>",
+                    "description": "Knowledge of international or local engineering standards and regulations."
+                }
+            }
+        }
+    },
+    "llm_agent_and_tool": {
+        "schemas": {
+            "virtual_assistan": {
+                "assistant_id": {
+                    "key_name": "assistant_id",
+                    "data_type": "string",
+                    "description": "A unique identifier for each virtual assistant."
+                },
+                "user_profile": {
+                    "key_name": "user_profile",
+                    "data_type": "object",
+                    "description": "The profile information of the user interacting with the assistant, includes name, preferences, and contact details."
+                },
+                "schedule_events": {
+                    "key_name": "schedule_events",
+                    "data_type": "array<object>",
+                    "description": "An array of events scheduled by the assistant, including details like event name, time, and location."
+                },
+                "task_list": {
+                    "key_name": "task_list",
+                    "data_type": "array<string>",
+                    "description": "A list of tasks that the assistant is managing for the user."
+                },
+                "reminders": {
+                    "key_name": "reminders",
+                    "data_type": "array<object>",
+                    "description": "An array of reminders set by the assistant, detailing the reminder message and time."
+                }
+            },
+            "customer_support": {
+                "agent_id": {
+                    "key_name": "agent_id",
+                    "data_type": "string",
+                    "description": "A unique identifier for each customer support agent."
+                },
+                "customer_queries": {
+                    "key_name": "customer_queries",
+                    "data_type": "array<object>",
+                    "description": "An array of customer queries handled by the agent, including query text, customer ID, and resolution status."
+                },
+                "resolution_time": {
+                    "key_name": "resolution_time",
+                    "data_type": "float",
+                    "description": "Average time taken by the agent to resolve customer issues, in hours."
+                },
+                "feedback_scores": {
+                    "key_name": "feedback_scores",
+                    "data_type": "array<float>",
+                    "description": "Customer feedback scores for this agent's performance."
+                }
+            },
+            "content_creation": {
+                "agent_id": {
+                    "key_name": "agent_id",
+                    "data_type": "string",
+                    "description": "Unique identifier for each content creation agent."
+                },
+                "projects": {
+                    "key_name": "projects",
+                    "data_type": "array<object>",
+                    "description": "A collection of projects handled by the agent, including type of content and deadline."
+                },
+                "creative_assets": {
+                    "key_name": "creative_assets",
+                    "data_type": "array<string>",
+                    "description": "Names or descriptions of creative assets produced by the agent."
+                },
+                "client_feedback": {
+                    "key_name": "client_feedback",
+                    "data_type": "object",
+                    "description": "Feedback and ratings provided by clients on the content created."
+                }
+            },
+            "research_assista": {
+                "assistant_id": {
+                    "key_name": "assistant_id",
+                    "data_type": "string",
+                    "description": "Unique identifier for the research assistant."
+                },
+                "research_topics": {
+                    "key_name": "research_topics",
+                    "data_type": "array<string>",
+                    "description": "List of research topics the assistant is involved with."
+                },
+                "data_sources": {
+                    "key_name": "data_sources",
+                    "data_type": "array<object>",
+                    "description": "Collection of data sources used in research, detailing source name and type."
+                },
+                "analysis_methods": {
+                    "key_name": "analysis_methods",
+                    "data_type": "array<string>",
+                    "description": "Methodologies adopted for analysis in research work."
+                },
+                "findings_report": {
+                    "key_name": "findings_report",
+                    "data_type": "string",
+                    "description": "A summary of the findings produced by the agent."
+                }
+            },
+            "e-commerce_recom": {
+                "agent_id": {
+                    "key_name": "agent_id",
+                    "data_type": "string",
+                    "description": "Unique identifier for the recommendation agent."
+                },
+                "user_behavior_data": {
+                    "key_name": "user_behavior_data",
+                    "data_type": "array<object>",
+                    "description": "Data reflecting user behaviors such as click patterns, purchase history, and search queries."
+                },
+                "recommendation_list": {
+                    "key_name": "recommendation_list",
+                    "data_type": "array<string>",
+                    "description": "List of personalized product recommendations for users."
+                },
+                "algorithm_version": {
+                    "key_name": "algorithm_version",
+                    "data_type": "string",
+                    "description": "Version of the recommendation algorithm used by the agent."
+                }
+            },
+            "healthcare_suppo": {
+                "agent_id": {
+                    "key_name": "agent_id",
+                    "data_type": "string",
+                    "description": "Unique identifier for the healthcare support agent."
+                },
+                "patient_interactions": {
+                    "key_name": "patient_interactions",
+                    "data_type": "array<object>",
+                    "description": "Records of interactions with patients, including time, content, and patient ID."
+                },
+                "medical_records": {
+                    "key_name": "medical_records",
+                    "data_type": "array<object>",
+                    "description": "Collection of medical records managed or accessed by the agent."
+                },
+                "appointment_schedule": {
+                    "key_name": "appointment_schedule",
+                    "data_type": "array<object>",
+                    "description": "Schedule of patient appointments organized by the agent."
+                }
+            },
+            "financial_adviso": {
+                "agent_id": {
+                    "key_name": "agent_id",
+                    "data_type": "string",
+                    "description": "Unique identifier for the financial advisory agent."
+                },
+                "investment_strategies": {
+                    "key_name": "investment_strategies",
+                    "data_type": "array<object>",
+                    "description": "Details of investment strategies proposed by the agent, including strategy type and risk level."
+                },
+                "client_portfolios": {
+                    "key_name": "client_portfolios",
+                    "data_type": "array<object>",
+                    "description": "Portfolios of assets managed by the agent, including asset types and valuations."
+                },
+                "economic_reports": {
+                    "key_name": "economic_reports",
+                    "data_type": "array<string>",
+                    "description": "List of economic and financial reports generated by the agent."
+                },
+                "performance_metrics": {
+                    "key_name": "performance_metrics",
+                    "data_type": "object",
+                    "description": "Metrics reflecting the performance of financial advisories, such as ROI, client retention rates."
+                }
+            },
+            "energy_managemen": {
+                "agent_id": {
+                    "key_name": "agent_id",
+                    "data_type": "string",
+                    "description": "Unique identifier for the energy management agent."
+                },
+                "energy_usage_data": {
+                    "key_name": "energy_usage_data",
+                    "data_type": "array<object>",
+                    "description": "Data related to energy consumption tracked by the agent."
+                },
+                "optimization_strategies": {
+                    "key_name": "optimization_strategies",
+                    "data_type": "array<object>",
+                    "description": "Strategies proposed by the agent to optimize energy usage."
+                },
+                "cost_savings_report": {
+                    "key_name": "cost_savings_report",
+                    "data_type": "object",
+                    "description": "Report highlighting the cost savings achieved through energy management."
+                },
+                "renewable_sources": {
+                    "key_name": "renewable_sources",
+                    "data_type": "array<string>",
+                    "description": "List of renewable energy sources utilized in the energy management process."
+                }
+            },
+            "legal_research_a": {
+                "agent_id": {
+                    "key_name": "agent_id",
+                    "data_type": "string",
+                    "description": "Unique identifier for the legal research agent."
+                },
+                "case_studies": {
+                    "key_name": "case_studies",
+                    "data_type": "array<object>",
+                    "description": "Collection of case studies researched by the agent, including case details and outcomes."
+                },
+                "legal_documents": {
+                    "key_name": "legal_documents",
+                    "data_type": "array<object>",
+                    "description": "Documents produced or referenced in the legal research, including summaries and full texts."
+                },
+                "citation_sources": {
+                    "key_name": "citation_sources",
+                    "data_type": "array<string>",
+                    "description": "Sources cited in legal documents or case studies."
+                },
+                "research_summaries": {
+                    "key_name": "research_summaries",
+                    "data_type": "array<string>",
+                    "description": "Summaries of research findings generated by the agent."
+                }
+            },
+            "education_tutori": {
+                "agent_id": {
+                    "key_name": "agent_id",
+                    "data_type": "string",
+                    "description": "Unique identifier for the education tutoring agent."
+                },
+                "student_profiles": {
+                    "key_name": "student_profiles",
+                    "data_type": "array<object>",
+                    "description": "Profiles of students being tutored, detailing learning styles and academic goals."
+                },
+                "curricular_content": {
+                    "key_name": "curricular_content",
+                    "data_type": "array<string>",
+                    "description": "Educational materials and lesson plans provided by the agent."
+                },
+                "assessment_results": {
+                    "key_name": "assessment_results",
+                    "data_type": "array<object>",
+                    "description": "Results from assessments or tests given to students, detailing scores and feedback."
+                },
+                "feedback_reports": {
+                    "key_name": "feedback_reports",
+                    "data_type": "array<string>",
+                    "description": "Reports reflecting feedback from students and adjusted tutoring strategies."
+                }
+            },
+            "chat_history_ana": {
+                "conversation_id": {
+                    "key_name": "conversation_id",
+                    "data_type": "string",
+                    "description": "Unique identifier for a specific conversation."
+                },
+                "user_id": {
+                    "key_name": "user_id",
+                    "data_type": "string",
+                    "description": "Unique identifier for the user involved in the conversation."
+                },
+                "message_timestamp": {
+                    "key_name": "message_timestamp",
+                    "data_type": "datetime",
+                    "description": "Timestamp indicating when the message was sent."
+                },
+                "message_content": {
+                    "key_name": "message_content",
+                    "data_type": "string",
+                    "description": "Content of the message sent by the user or the LLM."
+                },
+                "message_role": {
+                    "key_name": "message_role",
+                    "data_type": "string",
+                    "description": "Role of the entity sending the message, e.g., 'user' or 'LLM'."
+                },
+                "response_time": {
+                    "key_name": "response_time",
+                    "data_type": "float",
+                    "description": "Time taken by the LLM to respond to the message in seconds."
+                },
+                "chat_summary": {
+                    "key_name": "chat_summary",
+                    "data_type": "string",
+                    "description": "Brief summary of the chat conversation."
+                }
+            },
+            "model_performanc": {
+                "model_id": {
+                    "key_name": "model_id",
+                    "data_type": "string",
+                    "description": "Unique identifier for the LLM being evaluated."
+                },
+                "evaluation_date": {
+                    "key_name": "evaluation_date",
+                    "data_type": "date",
+                    "description": "Date when the model performance was evaluated."
+                },
+                "accuracy": {
+                    "key_name": "accuracy",
+                    "data_type": "float",
+                    "description": "Accuracy score of the model."
+                },
+                "precision": {
+                    "key_name": "precision",
+                    "data_type": "float",
+                    "description": "Precision score of the model."
+                },
+                "recall": {
+                    "key_name": "recall",
+                    "data_type": "float",
+                    "description": "Recall score of the model."
+                },
+                "f1_score": {
+                    "key_name": "f1_score",
+                    "data_type": "float",
+                    "description": "F1 score of the model."
+                },
+                "benchmark_dataset": {
+                    "key_name": "benchmark_dataset",
+                    "data_type": "string",
+                    "description": "Name or identifier of the dataset used for evaluation."
+                }
+            },
+            "user_behavior_tr": {
+                "session_id": {
+                    "key_name": "session_id",
+                    "data_type": "string",
+                    "description": "Unique identifier for the user session."
+                },
+                "user_id": {
+                    "key_name": "user_id",
+                    "data_type": "string",
+                    "description": "Unique identifier for the user."
+                },
+                "actions": {
+                    "key_name": "actions",
+                    "data_type": "array<object>",
+                    "description": "List of actions taken by the user during the session."
+                },
+                "action_id": {
+                    "key_name": "action_id",
+                    "data_type": "string",
+                    "description": "Unique identifier for a specific action."
+                },
+                "action_type": {
+                    "key_name": "action_type",
+                    "data_type": "string",
+                    "description": "Type of action performed, e.g., 'input', 'click', 'navigate'."
+                },
+                "action_timestamp": {
+                    "key_name": "action_timestamp",
+                    "data_type": "datetime",
+                    "description": "Timestamp of when the action was performed."
+                },
+                "metadata": {
+                    "key_name": "metadata",
+                    "data_type": "object",
+                    "description": "Additional metadata related to the action."
+                }
+            },
+            "api_usage_analyt": {
+                "api_key_id": {
+                    "key_name": "api_key_id",
+                    "data_type": "string",
+                    "description": "Identifier for the API key used."
+                },
+                "request_id": {
+                    "key_name": "request_id",
+                    "data_type": "string",
+                    "description": "Unique identifier for the API request."
+                },
+                "endpoint": {
+                    "key_name": "endpoint",
+                    "data_type": "string",
+                    "description": "The API endpoint that was accessed."
+                },
+                "request_timestamp": {
+                    "key_name": "request_timestamp",
+                    "data_type": "datetime",
+                    "description": "Timestamp when the API request was made."
+                },
+                "response_time": {
+                    "key_name": "response_time",
+                    "data_type": "float",
+                    "description": "Time taken to receive a response from the API in milliseconds."
+                },
+                "request_size": {
+                    "key_name": "request_size",
+                    "data_type": "integer",
+                    "description": "Size of the API request payload in bytes."
+                },
+                "response_size": {
+                    "key_name": "response_size",
+                    "data_type": "integer",
+                    "description": "Size of the API response payload in bytes."
+                },
+                "status_code": {
+                    "key_name": "status_code",
+                    "data_type": "integer",
+                    "description": "HTTP status code of the API response."
+                }
+            },
+            "content_generati": {
+                "generation_id": {
+                    "key_name": "generation_id",
+                    "data_type": "string",
+                    "description": "Unique identifier for the content generation event."
+                },
+                "user_id": {
+                    "key_name": "user_id",
+                    "data_type": "string",
+                    "description": "Unique identifier for the user requesting content generation."
+                },
+                "prompt": {
+                    "key_name": "prompt",
+                    "data_type": "string",
+                    "description": "Input text provided by the user to guide content generation."
+                },
+                "generated_content": {
+                    "key_name": "generated_content",
+                    "data_type": "string",
+                    "description": "Content generated by the LLM."
+                },
+                "temperature": {
+                    "key_name": "temperature",
+                    "data_type": "float",
+                    "description": "Temperature setting used to control randomness in content generation."
+                },
+                "max_tokens": {
+                    "key_name": "max_tokens",
+                    "data_type": "integer",
+                    "description": "Maximum number of tokens allowed in the generated content."
+                },
+                "generation_timestamp": {
+                    "key_name": "generation_timestamp",
+                    "data_type": "datetime",
+                    "description": "Timestamp when the content generation occurred."
+                }
+            },
+            "data_security_an": {
+                "document_id": {
+                    "key_name": "document_id",
+                    "data_type": "string",
+                    "description": "Unique identifier for the document."
+                },
+                "user_id": {
+                    "key_name": "user_id",
+                    "data_type": "string",
+                    "description": "Unique identifier for the user associated with the document."
+                },
+                "data_category": {
+                    "key_name": "data_category",
+                    "data_type": "string",
+                    "description": "Category of data being handled, e.g., 'PII', 'financial'."
+                },
+                "access_level": {
+                    "key_name": "access_level",
+                    "data_type": "string",
+                    "description": "Level of access control, e.g., 'public', 'confidential'."
+                },
+                "encryption_status": {
+                    "key_name": "encryption_status",
+                    "data_type": "boolean",
+                    "description": "Indicates if the data is encrypted."
+                },
+                "security_compliance": {
+                    "key_name": "security_compliance",
+                    "data_type": "string",
+                    "description": "Compliance status with security standards, e.g., 'GDPR', 'HIPAA'."
+                },
+                "audit_timestamp": {
+                    "key_name": "audit_timestamp",
+                    "data_type": "datetime",
+                    "description": "Timestamp of the last security audit."
+                }
+            },
+            "training_data_ma": {
+                "dataset_id": {
+                    "key_name": "dataset_id",
+                    "data_type": "string",
+                    "description": "Unique identifier for the training dataset."
+                },
+                "data_source": {
+                    "key_name": "data_source",
+                    "data_type": "string",
+                    "description": "Source of the training data, e.g., 'public', 'proprietary'."
+                },
+                "record_count": {
+                    "key_name": "record_count",
+                    "data_type": "integer",
+                    "description": "Total number of records in the dataset."
+                },
+                "data_format": {
+                    "key_name": "data_format",
+                    "data_type": "string",
+                    "description": "Format of the training data, e.g., 'CSV', 'JSON'."
+                },
+                "quality_score": {
+                    "key_name": "quality_score",
+                    "data_type": "float",
+                    "description": "Quality score of the dataset based on predefined criteria."
+                },
+                "last_updated": {
+                    "key_name": "last_updated",
+                    "data_type": "datetime",
+                    "description": "Date and time when the dataset was last updated."
+                },
+                "data_schema": {
+                    "key_name": "data_schema",
+                    "data_type": "object",
+                    "description": "Schema defining the structure of the records within the dataset."
+                }
+            },
+            "error_and_feedba": {
+                "log_id": {
+                    "key_name": "log_id",
+                    "data_type": "string",
+                    "description": "Unique identifier for the log entry."
+                },
+                "user_id": {
+                    "key_name": "user_id",
+                    "data_type": "string",
+                    "description": "Identifier for the user who provided feedback or encountered an error."
+                },
+                "error_code": {
+                    "key_name": "error_code",
+                    "data_type": "string",
+                    "description": "Code representing the specific error encountered."
+                },
+                "error_message": {
+                    "key_name": "error_message",
+                    "data_type": "string",
+                    "description": "Descriptive message of the error encountered."
+                },
+                "feedback_message": {
+                    "key_name": "feedback_message",
+                    "data_type": "string",
+                    "description": "Message containing user's feedback or suggestions."
+                },
+                "log_timestamp": {
+                    "key_name": "log_timestamp",
+                    "data_type": "datetime",
+                    "description": "Timestamp when the log entry was created."
+                },
+                "resolved_status": {
+                    "key_name": "resolved_status",
+                    "data_type": "boolean",
+                    "description": "Indicates if the reported issue has been resolved."
+                }
+            },
+            "sentiment_analys": {
+                "analysis_id": {
+                    "key_name": "analysis_id",
+                    "data_type": "string",
+                    "description": "Unique identifier for the sentiment analysis event."
+                },
+                "text_content": {
+                    "key_name": "text_content",
+                    "data_type": "string",
+                    "description": "Text content analyzed for sentiment."
+                },
+                "sentiment_score": {
+                    "key_name": "sentiment_score",
+                    "data_type": "float",
+                    "description": "Numerical score representing the sentiment (e.g., -1 to 1)."
+                },
+                "sentiment_label": {
+                    "key_name": "sentiment_label",
+                    "data_type": "string",
+                    "description": "Label of the sentiment, e.g., 'positive', 'negative', 'neutral'."
+                },
+                "analysis_timestamp": {
+                    "key_name": "analysis_timestamp",
+                    "data_type": "datetime",
+                    "description": "Timestamp when the sentiment analysis was performed."
+                },
+                "model_used": {
+                    "key_name": "model_used",
+                    "data_type": "string",
+                    "description": "Identifier of the model used for sentiment analysis."
+                },
+                "confidence_score": {
+                    "key_name": "confidence_score",
+                    "data_type": "float",
+                    "description": "Confidence score of the sentiment prediction."
+                }
+            },
+            "version_control_": {
+                "version_id": {
+                    "key_name": "version_id",
+                    "data_type": "string",
+                    "description": "Unique identifier for the model version."
+                },
+                "model_name": {
+                    "key_name": "model_name",
+                    "data_type": "string",
+                    "description": "Name of the model."
+                },
+                "version_number": {
+                    "key_name": "version_number",
+                    "data_type": "string",
+                    "description": "Version number of the model."
+                },
+                "release_date": {
+                    "key_name": "release_date",
+                    "data_type": "date",
+                    "description": "Release date of the specific version."
+                },
+                "changelog": {
+                    "key_name": "changelog",
+                    "data_type": "string",
+                    "description": "Description of changes and improvements in this version."
+                },
+                "deprecation_status": {
+                    "key_name": "deprecation_status",
+                    "data_type": "boolean",
+                    "description": "Indicates if the version is deprecated."
+                },
+                "metadata": {
+                    "key_name": "metadata",
+                    "data_type": "object",
+                    "description": "Additional information and metadata about the model version."
+                }
+            }
+        }
+    },
+    "Academic": {
+        "schemas": {
+            "journal_articles": {
+                "title": {
+                    "key_name": "title",
+                    "data_type": "string",
+                    "description": "The title of the journal article."
+                },
+                "authors": {
+                    "key_name": "authors",
+                    "data_type": "array<object>",
+                    "description": "An array of author objects, each containing details like name and affiliation."
+                },
+                "publication_date": {
+                    "key_name": "publication_date",
+                    "data_type": "date",
+                    "description": "The date the journal article was published in the format YYYY-MM-DD."
+                },
+                "journal_name": {
+                    "key_name": "journal_name",
+                    "data_type": "string",
+                    "description": "The name of the journal where the article was published."
+                },
+                "volume": {
+                    "key_name": "volume",
+                    "data_type": "integer",
+                    "description": "The volume number of the journal issue containing the article."
+                },
+                "issue": {
+                    "key_name": "issue",
+                    "data_type": "integer",
+                    "description": "The issue number of the journal volume containing the article."
+                },
+                "pages": {
+                    "key_name": "pages",
+                    "data_type": "string",
+                    "description": "The range of pages the article covers, typically in format 'start-end'."
+                },
+                "doi": {
+                    "key_name": "doi",
+                    "data_type": "string",
+                    "description": "The Digital Object Identifier used to uniquely identify the journal article."
+                },
+                "keywords": {
+                    "key_name": "keywords",
+                    "data_type": "array<string>",
+                    "description": "A list of keywords associated with the article's content."
+                },
+                "abstract": {
+                    "key_name": "abstract",
+                    "data_type": "string",
+                    "description": "A brief summary of the article's content and research findings."
+                },
+                "references": {
+                    "key_name": "references",
+                    "data_type": "array<object>",
+                    "description": "An array of reference objects that the article cites, each containing details like title and author."
+                }
+            },
+            "conference_paper": {
+                "title": {
+                    "key_name": "title",
+                    "data_type": "string",
+                    "description": "The title of the conference paper."
+                },
+                "authors": {
+                    "key_name": "authors",
+                    "data_type": "array<object>",
+                    "description": "An array of author objects detailing names and affiliations."
+                },
+                "conference_name": {
+                    "key_name": "conference_name",
+                    "data_type": "string",
+                    "description": "The name of the conference where the paper was presented."
+                },
+                "conference_date": {
+                    "key_name": "conference_date",
+                    "data_type": "date",
+                    "description": "The date the conference took place in the format YYYY-MM-DD."
+                },
+                "location": {
+                    "key_name": "location",
+                    "data_type": "string",
+                    "description": "The location where the conference was held."
+                },
+                "session": {
+                    "key_name": "session",
+                    "data_type": "string",
+                    "description": "The name or number of the session during the conference where the paper was presented."
+                },
+                "proceedings": {
+                    "key_name": "proceedings",
+                    "data_type": "string",
+                    "description": "Information about the conference proceedings, including publication details."
+                },
+                "doi": {
+                    "key_name": "doi",
+                    "data_type": "string",
+                    "description": "The Digital Object Identifier for the conference paper."
+                },
+                "abstract": {
+                    "key_name": "abstract",
+                    "data_type": "string",
+                    "description": "A brief summary of the conference paper's content and findings."
+                },
+                "full_text_url": {
+                    "key_name": "full_text_url",
+                    "data_type": "string",
+                    "description": "The URL where the full text of the conference paper can be accessed."
+                }
+            },
+            "theses_and_disse": {
+                "title": {
+                    "key_name": "title",
+                    "data_type": "string",
+                    "description": "The title of the thesis or dissertation."
+                },
+                "author": {
+                    "key_name": "author",
+                    "data_type": "object",
+                    "description": "Details about the author, including name, affiliation, and advisor."
+                },
+                "degree": {
+                    "key_name": "degree",
+                    "data_type": "string",
+                    "description": "The type of degree (e.g., PhD, Master's) associated with the dissertation."
+                },
+                "university": {
+                    "key_name": "university",
+                    "data_type": "string",
+                    "description": "The name of the university where the thesis or dissertation was submitted."
+                },
+                "submission_date": {
+                    "key_name": "submission_date",
+                    "data_type": "date",
+                    "description": "The date the thesis or dissertation was submitted in the format YYYY-MM-DD."
+                },
+                "abstract": {
+                    "key_name": "abstract",
+                    "data_type": "string",
+                    "description": "A summary of the research conducted and findings of the thesis or dissertation."
+                },
+                "keywords": {
+                    "key_name": "keywords",
+                    "data_type": "array<string>",
+                    "description": "Keywords associated with the research topic covered in the thesis."
+                },
+                "chapters": {
+                    "key_name": "chapters",
+                    "data_type": "array<object>",
+                    "description": "An array of objects representing chapters, each with titles and summaries."
+                },
+                "bibliography": {
+                    "key_name": "bibliography",
+                    "data_type": "array<object>",
+                    "description": "An array containing bibliographic details of works referenced in the thesis."
+                },
+                "url": {
+                    "key_name": "url",
+                    "data_type": "string",
+                    "description": "The URL where the full text of the thesis or dissertation can be accessed."
+                }
+            },
+            "course_materials": {
+                "course_name": {
+                    "key_name": "course_name",
+                    "data_type": "string",
+                    "description": "The name of the course associated with the materials."
+                },
+                "instructor": {
+                    "key_name": "instructor",
+                    "data_type": "object",
+                    "description": "Details about the instructor, including name and contact information."
+                },
+                "semester": {
+                    "key_name": "semester",
+                    "data_type": "string",
+                    "description": "The academic semester during which the course is offered."
+                },
+                "material_type": {
+                    "key_name": "material_type",
+                    "data_type": "string",
+                    "description": "The type of material, such as syllabus, lecture notes, or study guide."
+                },
+                "topics_covered": {
+                    "key_name": "topics_covered",
+                    "data_type": "array<string>",
+                    "description": "A list of topics covered by the course materials."
+                },
+                "availability_date": {
+                    "key_name": "availability_date",
+                    "data_type": "date",
+                    "description": "The date when the course materials become available."
+                },
+                "url": {
+                    "key_name": "url",
+                    "data_type": "string",
+                    "description": "The URL where the course materials can be accessed or downloaded."
+                },
+                "prerequisites": {
+                    "key_name": "prerequisites",
+                    "data_type": "array<string>",
+                    "description": "A list of courses or topics recommended before taking the course."
+                },
+                "recommended_readings": {
+                    "key_name": "recommended_readings",
+                    "data_type": "array<object>",
+                    "description": "An array of recommended reading materials including book titles and authors."
+                }
+            },
+            "research_data": {
+                "dataset_name": {
+                    "key_name": "dataset_name",
+                    "data_type": "string",
+                    "description": "The name of the research dataset."
+                },
+                "creator": {
+                    "key_name": "creator",
+                    "data_type": "object",
+                    "description": "Details about the creator of the dataset, including name and affiliation."
+                },
+                "date_collected": {
+                    "key_name": "date_collected",
+                    "data_type": "datetime",
+                    "description": "The timestamp when the data was collected, formatted as YYYY-MM-DDTHH:mm:ssZ."
+                },
+                "variable_descriptions": {
+                    "key_name": "variable_descriptions",
+                    "data_type": "array<object>",
+                    "description": "A list of objects describing variables in the dataset, including names and units."
+                },
+                "data_format": {
+                    "key_name": "data_format",
+                    "data_type": "string",
+                    "description": "The format of the dataset, such as CSV, JSON, or XML."
+                },
+                "license": {
+                    "key_name": "license",
+                    "data_type": "string",
+                    "description": "The type of license governing the use and distribution of the dataset."
+                },
+                "sampling_method": {
+                    "key_name": "sampling_method",
+                    "data_type": "string",
+                    "description": "Details about the method used to collect data samples."
+                },
+                "related_publications": {
+                    "key_name": "related_publications",
+                    "data_type": "array<object>",
+                    "description": "References to publications related to or generated from the dataset."
+                },
+                "download_url": {
+                    "key_name": "download_url",
+                    "data_type": "string",
+                    "description": "The URL where the dataset can be downloaded."
+                },
+                "metadata": {
+                    "key_name": "metadata",
+                    "data_type": "object",
+                    "description": "Additional metadata about the dataset, including data size and annotations."
+                }
+            },
+            "academic_profile": {
+                "name": {
+                    "key_name": "name",
+                    "data_type": "string",
+                    "description": "The full name of the academic."
+                },
+                "institution": {
+                    "key_name": "institution",
+                    "data_type": "string",
+                    "description": "The name of the institution where the academic is affiliated."
+                },
+                "department": {
+                    "key_name": "department",
+                    "data_type": "string",
+                    "description": "The specific department within the institution where the academic works."
+                },
+                "research_interests": {
+                    "key_name": "research_interests",
+                    "data_type": "array<string>",
+                    "description": "A list of research areas and interests of the academic."
+                },
+                "publications": {
+                    "key_name": "publications",
+                    "data_type": "array<object>",
+                    "description": "A list of publication objects authored or co-authored by the academic."
+                },
+                "contact_email": {
+                    "key_name": "contact_email",
+                    "data_type": "string",
+                    "description": "The email address for contacting the academic."
+                },
+                "office_location": {
+                    "key_name": "office_location",
+                    "data_type": "string",
+                    "description": "The location of the academic's office on campus."
+                },
+                "profile_url": {
+                    "key_name": "profile_url",
+                    "data_type": "string",
+                    "description": "The URL of the academic's profile page."
+                },
+                "education": {
+                    "key_name": "education",
+                    "data_type": "array<object>",
+                    "description": "An array of educational qualifications achieved by the academic."
+                }
+            },
+            "books_and_monogr": {
+                "title": {
+                    "key_name": "title",
+                    "data_type": "string",
+                    "description": "The title of the academic book or monograph."
+                },
+                "authors": {
+                    "key_name": "authors",
+                    "data_type": "array<object>",
+                    "description": "An array of objects detailing authors and their affiliations."
+                },
+                "isbn": {
+                    "key_name": "isbn",
+                    "data_type": "string",
+                    "description": "The International Standard Book Number uniquely identifying the book."
+                },
+                "publication_date": {
+                    "key_name": "publication_date",
+                    "data_type": "date",
+                    "description": "The date the book was published in the format YYYY-MM-DD."
+                },
+                "publisher": {
+                    "key_name": "publisher",
+                    "data_type": "string",
+                    "description": "The name of the publisher that published the book."
+                },
+                "pages": {
+                    "key_name": "pages",
+                    "data_type": "integer",
+                    "description": "The total number of pages in the book or monograph."
+                },
+                "language": {
+                    "key_name": "language",
+                    "data_type": "string",
+                    "description": "The language in which the book is written."
+                },
+                "book_format": {
+                    "key_name": "book_format",
+                    "data_type": "string",
+                    "description": "The format of the book, such as hardcover or paperback."
+                },
+                "keywords": {
+                    "key_name": "keywords",
+                    "data_type": "array<string>",
+                    "description": "Keywords and key phrases associated with the book's content."
+                },
+                "summary": {
+                    "key_name": "summary",
+                    "data_type": "string",
+                    "description": "A summary of the book's content and themes."
+                },
+                "chapters": {
+                    "key_name": "chapters",
+                    "data_type": "array<object>",
+                    "description": "A list of chapters in the book, each with titles and brief descriptions."
+                }
+            },
+            "patents": {
+                "patent_title": {
+                    "key_name": "patent_title",
+                    "data_type": "string",
+                    "description": "The title of the patent granted to the innovation or invention."
+                },
+                "inventors": {
+                    "key_name": "inventors",
+                    "data_type": "array<object>",
+                    "description": "Related details about the patent inventors, including names and affiliations."
+                },
+                "patent_number": {
+                    "key_name": "patent_number",
+                    "data_type": "string",
+                    "description": "The unique identifier assigned to the patent."
+                },
+                "priority_date": {
+                    "key_name": "priority_date",
+                    "data_type": "date",
+                    "description": "The date that determines the precedence of the patent application."
+                },
+                "filing_date": {
+                    "key_name": "filing_date",
+                    "data_type": "date",
+                    "description": "The date when the patent application was filed."
+                },
+                "issue_date": {
+                    "key_name": "issue_date",
+                    "data_type": "date",
+                    "description": "The date when the patent was officially issued."
+                },
+                "patent_office": {
+                    "key_name": "patent_office",
+                    "data_type": "string",
+                    "description": "The official patent office where the patent was granted."
+                },
+                "abstract": {
+                    "key_name": "abstract",
+                    "data_type": "string",
+                    "description": "A brief description of the patented invention's features and claims."
+                },
+                "citations": {
+                    "key_name": "citations",
+                    "data_type": "array<object>",
+                    "description": "A list of citations relating the patent to previously similar inventions."
+                },
+                "claims": {
+                    "key_name": "claims",
+                    "data_type": "array<string>",
+                    "description": "A list of legal claims that define the scope of the patent's protection."
+                }
+            },
+            "research_grants": {
+                "grant_title": {
+                    "key_name": "grant_title",
+                    "data_type": "string",
+                    "description": "The title or name of the research grant."
+                },
+                "grant_number": {
+                    "key_name": "grant_number",
+                    "data_type": "string",
+                    "description": "The unique identification number assigned to the grant."
+                },
+                "principal_investigator": {
+                    "key_name": "principal_investigator",
+                    "data_type": "object",
+                    "description": "Details about the principal investigator, including name and institution."
+                },
+                "funding_agency": {
+                    "key_name": "funding_agency",
+                    "data_type": "string",
+                    "description": "The name of the agency or organization providing the grant."
+                },
+                "amount": {
+                    "key_name": "amount",
+                    "data_type": "float",
+                    "description": "The total monetary value of the grant awarded in currency."
+                },
+                "start_date": {
+                    "key_name": "start_date",
+                    "data_type": "date",
+                    "description": "The date the grant period begins, formatted as YYYY-MM-DD."
+                },
+                "end_date": {
+                    "key_name": "end_date",
+                    "data_type": "date",
+                    "description": "The date the grant period ends, formatted as YYYY-MM-DD."
+                },
+                "research_fields": {
+                    "key_name": "research_fields",
+                    "data_type": "array<string>",
+                    "description": "A list of research areas and fields covered by the grant."
+                },
+                "objectives": {
+                    "key_name": "objectives",
+                    "data_type": "array<string>",
+                    "description": "Specific objectives and goals established for the research project funded by the grant."
+                }
+            },
+            "preprints": {
+                "title": {
+                    "key_name": "title",
+                    "data_type": "string",
+                    "description": "The title of the preprint research paper."
+                },
+                "authors": {
+                    "key_name": "authors",
+                    "data_type": "array<object>",
+                    "description": "An array of objects detailing names and affiliations of the preprint authors."
+                },
+                "abstract": {
+                    "key_name": "abstract",
+                    "data_type": "string",
+                    "description": "A brief summary of the research paper's purpose and findings."
+                },
+                "submission_date": {
+                    "key_name": "submission_date",
+                    "data_type": "date",
+                    "description": "The date when the preprint was submitted for public sharing in the format YYYY-MM-DD."
+                },
+                "preprint_platform": {
+                    "key_name": "preprint_platform",
+                    "data_type": "string",
+                    "description": "The platform or repository where the preprint is publicly shared."
+                },
+                "keywords": {
+                    "key_name": "keywords",
+                    "data_type": "array<string>",
+                    "description": "Keywords associated with the research topic covered in the preprint."
+                },
+                "doi": {
+                    "key_name": "doi",
+                    "data_type": "string",
+                    "description": "The Digital Object Identifier for the preprint article."
+                },
+                "full_text_url": {
+                    "key_name": "full_text_url",
+                    "data_type": "string",
+                    "description": "The URL where the full text of the preprint can be accessed."
+                },
+                "status": {
+                    "key_name": "status",
+                    "data_type": "string",
+                    "description": "The current status of the preprint, e.g., under review, or accepted."
+                },
+                "acknowledgements": {
+                    "key_name": "acknowledgements",
+                    "data_type": "string",
+                    "description": "Acknowledgements of funding or support mentioned in the preprint."
+                }
+            },
+            "laboratory_proto": {
+                "protocol_title": {
+                    "key_name": "protocol_title",
+                    "data_type": "string",
+                    "description": "The title of the laboratory protocol."
+                },
+                "research_team": {
+                    "key_name": "research_team",
+                    "data_type": "array<object>",
+                    "description": "A list of team members involved in creating and executing the protocol."
+                },
+                "experiment_type": {
+                    "key_name": "experiment_type",
+                    "data_type": "string",
+                    "description": "The type of experiment the protocol is designed for."
+                },
+                "steps": {
+                    "key_name": "steps",
+                    "data_type": "array<object>",
+                    "description": "Detailed step-by-step instructions for the protocol execution."
+                },
+                "required_equipment": {
+                    "key_name": "required_equipment",
+                    "data_type": "array<string>",
+                    "description": "A list of equipment required to execute the protocol."
+                },
+                "sample_source": {
+                    "key_name": "sample_source",
+                    "data_type": "string",
+                    "description": "Description of the sample source to be used in the protocol."
+                },
+                "safety_precautions": {
+                    "key_name": "safety_precautions",
+                    "data_type": "array<string>",
+                    "description": "Safety measures to be taken during the protocol execution."
+                },
+                "expected_results": {
+                    "key_name": "expected_results",
+                    "data_type": "string",
+                    "description": "Description of the anticipated results of the experiment."
+                },
+                "protocol_date": {
+                    "key_name": "protocol_date",
+                    "data_type": "date",
+                    "description": "The date the protocol was established in the format YYYY-MM-DD."
+                }
+            },
+            "scholarly_events": {
+                "event_name": {
+                    "key_name": "event_name",
+                    "data_type": "string",
+                    "description": "The name of the scholarly event or gathering."
+                },
+                "organizers": {
+                    "key_name": "organizers",
+                    "data_type": "array<object>",
+                    "description": "Details of those responsible for organizing the event, including names and affiliations."
+                },
+                "event_date": {
+                    "key_name": "event_date",
+                    "data_type": "date",
+                    "description": "The date the event is scheduled to occur."
+                },
+                "venue": {
+                    "key_name": "venue",
+                    "data_type": "string",
+                    "description": "Location or venue where the event is taking place."
+                },
+                "agenda": {
+                    "key_name": "agenda",
+                    "data_type": "string",
+                    "description": "Outline of the subjects or activities planned during the event."
+                },
+                "attendees": {
+                    "key_name": "attendees",
+                    "data_type": "array<object>",
+                    "description": "A list of individuals expected to attend the event."
+                },
+                "sponsors": {
+                    "key_name": "sponsors",
+                    "data_type": "array<string>",
+                    "description": "Entities or organizations sponsoring the event."
+                },
+                "keynote_speakers": {
+                    "key_name": "keynote_speakers",
+                    "data_type": "array<object>",
+                    "description": "Selected individuals delivering keynote speeches at the event."
+                },
+                "registration_link": {
+                    "key_name": "registration_link",
+                    "data_type": "string",
+                    "description": "The URL where participants can register for the event."
+                }
+            },
+            "academic_collabo": {
+                "collaboration_title": {
+                    "key_name": "collaboration_title",
+                    "data_type": "string",
+                    "description": "The title or name of the academic collaboration."
+                },
+                "partners": {
+                    "key_name": "partners",
+                    "data_type": "array<object>",
+                    "description": "Details about the collaborating partners, including institutions and lead contacts."
+                },
+                "collaboration_start_date": {
+                    "key_name": "collaboration_start_date",
+                    "data_type": "date",
+                    "description": "The date when the collaboration officially started."
+                },
+                "collaboration_type": {
+                    "key_name": "collaboration_type",
+                    "data_type": "string",
+                    "description": "The type of collaboration, such as research exchange or joint research project."
+                },
+                "research_areas": {
+                    "key_name": "research_areas",
+                    "data_type": "array<string>",
+                    "description": "The main focus areas or disciplines of the collaboration."
+                },
+                "funding_sources": {
+                    "key_name": "funding_sources",
+                    "data_type": "array<string>",
+                    "description": "Sources of funding supporting the collaboration efforts."
+                },
+                "goals": {
+                    "key_name": "goals",
+                    "data_type": "array<string>",
+                    "description": "The targeted goals and outcomes expected from the collaboration."
+                },
+                "results": {
+                    "key_name": "results",
+                    "data_type": "array<object>",
+                    "description": "Achieved results and findings derived from the collaboration activities."
+                },
+                "contact_person": {
+                    "key_name": "contact_person",
+                    "data_type": "object",
+                    "description": "Information about the primary contact person managing the collaboration."
+                }
+            },
+            "educational_surv": {
+                "survey_title": {
+                    "key_name": "survey_title",
+                    "data_type": "string",
+                    "description": "The title of the educational survey conducted."
+                },
+                "conducted_by": {
+                    "key_name": "conducted_by",
+                    "data_type": "string",
+                    "description": "The name of the entity or organization conducting the survey."
+                },
+                "objective": {
+                    "key_name": "objective",
+                    "data_type": "string",
+                    "description": "The primary goal or purpose of the educational survey."
+                },
+                "participant_group": {
+                    "key_name": "participant_group",
+                    "data_type": "string",
+                    "description": "The group or demographic being surveyed, such as students or teachers."
+                },
+                "survey_date": {
+                    "key_name": "survey_date",
+                    "data_type": "date",
+                    "description": "The date the survey was conducted."
+                },
+                "questions": {
+                    "key_name": "questions",
+                    "data_type": "array<object>",
+                    "description": "A list of question objects asked during the survey, along with types and formats."
+                },
+                "data_analysis_methods": {
+                    "key_name": "data_analysis_methods",
+                    "data_type": "array<string>",
+                    "description": "Methods used to analyze survey data."
+                },
+                "results_summary": {
+                    "key_name": "results_summary",
+                    "data_type": "string",
+                    "description": "A brief summary of the survey results."
+                },
+                "conclusion": {
+                    "key_name": "conclusion",
+                    "data_type": "string",
+                    "description": "Concluding remarks or insights derived from the survey."
+                }
+            },
+            "digital_learning": {
+                "platform_name": {
+                    "key_name": "platform_name",
+                    "data_type": "string",
+                    "description": "The name of the digital learning platform."
+                },
+                "developer": {
+                    "key_name": "developer",
+                    "data_type": "string",
+                    "description": "The entity or company responsible for developing the platform."
+                },
+                "features": {
+                    "key_name": "features",
+                    "data_type": "array<string>",
+                    "description": "Key features and functionalities offered by the platform."
+                },
+                "user_types": {
+                    "key_name": "user_types",
+                    "data_type": "array<string>",
+                    "description": "Different types of users catered to by the platform, such as students or educators."
+                },
+                "subscription_model": {
+                    "key_name": "subscription_model",
+                    "data_type": "string",
+                    "description": "The type of subscription model used by the platform, like freemium or paid levels."
+                },
+                "courses_available": {
+                    "key_name": "courses_available",
+                    "data_type": "array<object>",
+                    "description": "A list of courses offered on the platform, along with details."
+                },
+                "launch_date": {
+                    "key_name": "launch_date",
+                    "data_type": "date",
+                    "description": "The date when the platform was officially launched."
+                },
+                "user_feedback": {
+                    "key_name": "user_feedback",
+                    "data_type": "array<object>",
+                    "description": "Feedback and reviews provided by users regarding platform usage."
+                },
+                "access_url": {
+                    "key_name": "access_url",
+                    "data_type": "string",
+                    "description": "The URL providing access to the digital learning platform."
+                }
+            },
+            "academic_worksho": {
+                "workshop_title": {
+                    "key_name": "workshop_title",
+                    "data_type": "string",
+                    "description": "The official title of the academic workshop."
+                },
+                "workshop_leader": {
+                    "key_name": "workshop_leader",
+                    "data_type": "object",
+                    "description": "Details about the workshop leader, including name and affiliation."
+                },
+                "date_scheduled": {
+                    "key_name": "date_scheduled",
+                    "data_type": "date",
+                    "description": "The scheduled date for the workshop."
+                },
+                "duration": {
+                    "key_name": "duration",
+                    "data_type": "float",
+                    "description": "The duration of the workshop in hours."
+                },
+                "target_audience": {
+                    "key_name": "target_audience",
+                    "data_type": "string",
+                    "description": "Description of the intended audience for the workshop."
+                },
+                "topics": {
+                    "key_name": "topics",
+                    "data_type": "array<string>",
+                    "description": "A list of topics to be addressed during the workshop."
+                },
+                "registration_fee": {
+                    "key_name": "registration_fee",
+                    "data_type": "float",
+                    "description": "The fee required to register for the workshop."
+                },
+                "location": {
+                    "key_name": "location",
+                    "data_type": "string",
+                    "description": "Location where the workshop will be conducted."
+                },
+                "contact_information": {
+                    "key_name": "contact_information",
+                    "data_type": "object",
+                    "description": "Contact details for inquiries about the workshop."
+                }
+            },
+            "academic_journal": {
+                "index_title": {
+                    "key_name": "index_title",
+                    "data_type": "string",
+                    "description": "Title of the article index for easy referencing."
+                },
+                "journal": {
+                    "key_name": "journal",
+                    "data_type": "string",
+                    "description": "The journal to which the article index belongs."
+                },
+                "volume": {
+                    "key_name": "volume",
+                    "data_type": "integer",
+                    "description": "Volume number associated with the article index."
+                },
+                "issue": {
+                    "key_name": "issue",
+                    "data_type": "integer",
+                    "description": "Issue number within the volume for the index entry."
+                },
+                "articles": {
+                    "key_name": "articles",
+                    "data_type": "array<object>",
+                    "description": "A list of articles within the index, each with titles and abstracts."
+                },
+                "index_data": {
+                    "key_name": "index_data",
+                    "data_type": "object",
+                    "description": "Metadata details about the index including creation date and contributors."
+                }
+            },
+            "research_tutoria": {
+                "tutorial_title": {
+                    "key_name": "tutorial_title",
+                    "data_type": "string",
+                    "description": "The title of the research tutorial."
+                },
+                "instructor": {
+                    "key_name": "instructor",
+                    "data_type": "object",
+                    "description": "Details about the instructor including name, expertise, and contact information."
+                },
+                "release_date": {
+                    "key_name": "release_date",
+                    "data_type": "date",
+                    "description": "The date the tutorial was released and made available to the public."
+                },
+                "content_type": {
+                    "key_name": "content_type",
+                    "data_type": "string",
+                    "description": "The type of content in the tutorial, such as video, text, or interactive."
+                },
+                "main_topics": {
+                    "key_name": "main_topics",
+                    "data_type": "array<string>",
+                    "description": "The main topics covered by the tutorial."
+                },
+                "duration": {
+                    "key_name": "duration",
+                    "data_type": "float",
+                    "description": "The length of time, in hours, required to complete the tutorial."
+                },
+                "level": {
+                    "key_name": "level",
+                    "data_type": "string",
+                    "description": "The level of complexity of the tutorial, suitable for beginners, intermediate, or advanced learners."
+                },
+                "resources_provided": {
+                    "key_name": "resources_provided",
+                    "data_type": "array<object>",
+                    "description": "Additional resources provided to enhance learning, such as reading lists."
+                },
+                "access_link": {
+                    "key_name": "access_link",
+                    "data_type": "string",
+                    "description": "The URL where the tutorial can be accessed."
+                }
+            },
+            "academic_competi": {
+                "competition_title": {
+                    "key_name": "competition_title",
+                    "data_type": "string",
+                    "description": "Title or name of the academic competition."
+                },
+                "organizing_body": {
+                    "key_name": "organizing_body",
+                    "data_type": "string",
+                    "description": "The organization responsible for organizing the competition."
+                },
+                "submission_deadline": {
+                    "key_name": "submission_deadline",
+                    "data_type": "date",
+                    "description": "Deadline date for participants to submit entries."
+                },
+                "competition_date": {
+                    "key_name": "competition_date",
+                    "data_type": "date",
+                    "description": "Scheduled date when the competition will take place."
+                },
+                "competition_type": {
+                    "key_name": "competition_type",
+                    "data_type": "string",
+                    "description": "The category or type of competition, e.g., essay, design, or problem-solving."
+                },
+                "eligibility_criteria": {
+                    "key_name": "eligibility_criteria",
+                    "data_type": "string",
+                    "description": "Criteria that determine who can participate in the competition."
+                },
+                "prizes": {
+                    "key_name": "prizes",
+                    "data_type": "array<object>",
+                    "description": "Details about the prizes to be awarded including types and values."
+                },
+                "registration_url": {
+                    "key_name": "registration_url",
+                    "data_type": "string",
+                    "description": "The URL where participants can register for the competition."
+                }
+            }
+        }
+    },
+    "Finance_and_Economics": {
+        "schemas": {
+            "stock_market_dat": {
+                "stock_symbol": {
+                    "key_name": "stock_symbol",
+                    "data_type": "string",
+                    "description": "The unique identifier or ticker symbol of the stock."
+                },
+                "company_name": {
+                    "key_name": "company_name",
+                    "data_type": "string",
+                    "description": "Official name of the company registered under the stock ticker."
+                },
+                "market_price": {
+                    "key_name": "market_price",
+                    "data_type": "float",
+                    "description": "Current trading price of the stock in the market."
+                },
+                "volume": {
+                    "key_name": "volume",
+                    "data_type": "integer",
+                    "description": "Number of shares traded during a given period."
+                },
+                "trade_date": {
+                    "key_name": "trade_date",
+                    "data_type": "date",
+                    "description": "Date on which the trade occurred, in format YYYY-MM-DD."
+                },
+                "historical_prices": {
+                    "key_name": "historical_prices",
+                    "data_type": "array<object>",
+                    "description": "Array of objects containing past price details over a time period."
+                }
+            },
+            "corporate_financ": {
+                "company_id": {
+                    "key_name": "company_id",
+                    "data_type": "string",
+                    "description": "Unique identifier for the company."
+                },
+                "reporting_period": {
+                    "key_name": "reporting_period",
+                    "data_type": "string",
+                    "description": "The financial period for which the report is generated, e.g., 'Q1 2023'."
+                },
+                "balance_sheet": {
+                    "key_name": "balance_sheet",
+                    "data_type": "object",
+                    "description": "Object representing the balance sheet comprising assets, liabilities, and shareholder equity."
+                },
+                "income_statement": {
+                    "key_name": "income_statement",
+                    "data_type": "object",
+                    "description": "Object representing performance through income, expenses, and profits."
+                },
+                "cash_flow_statement": {
+                    "key_name": "cash_flow_statement",
+                    "data_type": "object",
+                    "description": "Object detailing cash inflows and outflows during the financial period."
+                },
+                "auditor_details": {
+                    "key_name": "auditor_details",
+                    "data_type": "string",
+                    "description": "Information about the auditing entity responsible for the report."
+                },
+                "financial_ratios": {
+                    "key_name": "financial_ratios",
+                    "data_type": "array<object>",
+                    "description": "Array of financial ratios computed from the statements."
+                }
+            },
+            "personal_finance": {
+                "user_profile": {
+                    "key_name": "user_profile",
+                    "data_type": "object",
+                    "description": "Details about the user managing personal finance, including name, age, and contact info."
+                },
+                "monthly_budget": {
+                    "key_name": "monthly_budget",
+                    "data_type": "float",
+                    "description": "Total budget allocated for monthly expenses and savings."
+                },
+                "expense_categories": {
+                    "key_name": "expense_categories",
+                    "data_type": "array<string>",
+                    "description": "Different categories of expenses, e.g., groceries, rent, entertainment."
+                },
+                "savings_goal": {
+                    "key_name": "savings_goal",
+                    "data_type": "float",
+                    "description": "Target savings amount for a specified duration."
+                },
+                "investment_portfolio": {
+                    "key_name": "investment_portfolio",
+                    "data_type": "object",
+                    "description": "Object listing current investments and their performance metrics."
+                },
+                "financial_advice": {
+                    "key_name": "financial_advice",
+                    "data_type": "string",
+                    "description": "Personalized financial advice based on user data."
+                }
+            },
+            "cryptocurrency_a": {
+                "crypto_symbol": {
+                    "key_name": "crypto_symbol",
+                    "data_type": "string",
+                    "description": "Identifier for the cryptocurrency, e.g., BTC, ETH."
+                },
+                "blockchain_network": {
+                    "key_name": "blockchain_network",
+                    "data_type": "string",
+                    "description": "Name of the blockchain network, such as Ethereum, Bitcoin."
+                },
+                "transaction_hash": {
+                    "key_name": "transaction_hash",
+                    "data_type": "string",
+                    "description": "Unique hash representing a specific transaction on the blockchain."
+                },
+                "transaction_date": {
+                    "key_name": "transaction_date",
+                    "data_type": "datetime",
+                    "description": "Timestamp indicating when the transaction was recorded."
+                },
+                "wallet_address": {
+                    "key_name": "wallet_address",
+                    "data_type": "string",
+                    "description": "Cryptocurrency wallet address associated with transactions."
+                },
+                "transaction_amount": {
+                    "key_name": "transaction_amount",
+                    "data_type": "float",
+                    "description": "Amount of cryptocurrency transferred or received."
+                },
+                "smart_contract_details": {
+                    "key_name": "smart_contract_details",
+                    "data_type": "object",
+                    "description": "Information about smart contracts involved in transactions."
+                },
+                "miners_fee": {
+                    "key_name": "miners_fee",
+                    "data_type": "float",
+                    "description": "Fee paid to miners for processing the transaction."
+                }
+            },
+            "banking_transact": {
+                "account_number": {
+                    "key_name": "account_number",
+                    "data_type": "string",
+                    "description": "Unique identification number for the bank account."
+                },
+                "transaction_id": {
+                    "key_name": "transaction_id",
+                    "data_type": "string",
+                    "description": "Unique ID assigned to the transaction."
+                },
+                "transaction_type": {
+                    "key_name": "transaction_type",
+                    "data_type": "string",
+                    "description": "Type of transaction, e.g., deposit, withdrawal, transfer."
+                },
+                "transaction_date": {
+                    "key_name": "transaction_date",
+                    "data_type": "datetime",
+                    "description": "Date and time when the transaction took place."
+                },
+                "transaction_amount": {
+                    "key_name": "transaction_amount",
+                    "data_type": "float",
+                    "description": "Monetary value involved in the transaction."
+                },
+                "transaction_currency": {
+                    "key_name": "transaction_currency",
+                    "data_type": "string",
+                    "description": "Currency code in which the transaction was made."
+                },
+                "beneficiary_details": {
+                    "key_name": "beneficiary_details",
+                    "data_type": "object",
+                    "description": "Information about the beneficiary receiving the funds."
+                }
+            },
+            "economic_indicat": {
+                "indicator_name": {
+                    "key_name": "indicator_name",
+                    "data_type": "string",
+                    "description": "Name of the economic indicator, such as GDP, inflation rate."
+                },
+                "indicator_value": {
+                    "key_name": "indicator_value",
+                    "data_type": "float",
+                    "description": "The actual numeric value of the indicator."
+                },
+                "measurement_date": {
+                    "key_name": "measurement_date",
+                    "data_type": "date",
+                    "description": "Date when the economic indicator value was measured."
+                },
+                "country": {
+                    "key_name": "country",
+                    "data_type": "string",
+                    "description": "Country for which the economic data is relevant."
+                },
+                "historical_values": {
+                    "key_name": "historical_values",
+                    "data_type": "array<object>",
+                    "description": "Array containing past values and dates for trend analysis."
+                }
+            },
+            "investment_portf": {
+                "portfolio_id": {
+                    "key_name": "portfolio_id",
+                    "data_type": "string",
+                    "description": "Unique ID for identifying an investment portfolio."
+                },
+                "portfolio_owner": {
+                    "key_name": "portfolio_owner",
+                    "data_type": "object",
+                    "description": "Details about the owner of the investment portfolio, including name and contact information."
+                },
+                "assets": {
+                    "key_name": "assets",
+                    "data_type": "array<object>",
+                    "description": "Array listing assets held in the portfolio and relevant performance metrics."
+                },
+                "investment_strategy": {
+                    "key_name": "investment_strategy",
+                    "data_type": "string",
+                    "description": "Description of the investment strategy being employed."
+                },
+                "risk_tolerance": {
+                    "key_name": "risk_tolerance",
+                    "data_type": "string",
+                    "description": "Categorization of the owner's risk tolerance, e.g., high, medium, low."
+                },
+                "performance_summary": {
+                    "key_name": "performance_summary",
+                    "data_type": "object",
+                    "description": "Object containing performance metrics like returns and risks."
+                }
+            },
+            "financial_risk_a": {
+                "analysis_id": {
+                    "key_name": "analysis_id",
+                    "data_type": "string",
+                    "description": "Unique identifier for a risk analysis report."
+                },
+                "subject_entity": {
+                    "key_name": "subject_entity",
+                    "data_type": "object",
+                    "description": "Details of the entity or financial instrument being analyzed for risk."
+                },
+                "risk_type": {
+                    "key_name": "risk_type",
+                    "data_type": "string",
+                    "description": "Category of risk being analyzed, e.g., credit risk, market risk."
+                },
+                "maturity_date": {
+                    "key_name": "maturity_date",
+                    "data_type": "date",
+                    "description": "Date when the analyzed instrument reaches maturity."
+                },
+                "risk_impact": {
+                    "key_name": "risk_impact",
+                    "data_type": "object",
+                    "description": "Evaluation of potential impacts in numerical and textual format."
+                },
+                "mitigation_strategies": {
+                    "key_name": "mitigation_strategies",
+                    "data_type": "array<string>",
+                    "description": "List of strategies suggested to mitigate identified risks."
+                }
+            },
+            "insurance_policy": {
+                "policy_id": {
+                    "key_name": "policy_id",
+                    "data_type": "string",
+                    "description": "Unique identifier for the insurance policy."
+                },
+                "policy_holder": {
+                    "key_name": "policy_holder",
+                    "data_type": "object",
+                    "description": "Details about the policyholder including name, address, and contact information."
+                },
+                "coverage_amount": {
+                    "key_name": "coverage_amount",
+                    "data_type": "float",
+                    "description": "Total monetary amount covered under the policy."
+                },
+                "premium": {
+                    "key_name": "premium",
+                    "data_type": "float",
+                    "description": "Regular payment required to keep the policy active."
+                },
+                "claim_history": {
+                    "key_name": "claim_history",
+                    "data_type": "array<object>",
+                    "description": "Record of past claims made under the policy."
+                },
+                "policy_terms": {
+                    "key_name": "policy_terms",
+                    "data_type": "string",
+                    "description": "Terms and conditions governing the insurance policy."
+                }
+            },
+            "international_tr": {
+                "trade_agreement_id": {
+                    "key_name": "trade_agreement_id",
+                    "data_type": "string",
+                    "description": "Unique identifier for a trade agreement."
+                },
+                "partner_countries": {
+                    "key_name": "partner_countries",
+                    "data_type": "array<string>",
+                    "description": "List of countries involved in the trade agreement."
+                },
+                "tariff_rates": {
+                    "key_name": "tariff_rates",
+                    "data_type": "array<object>",
+                    "description": "Details of tariff rates applied to goods exchanged between countries."
+                },
+                "trade_statistics": {
+                    "key_name": "trade_statistics",
+                    "data_type": "object",
+                    "description": "Statistical data related to imports and exports as part of international agreements."
+                },
+                "economic_diplomacy_info": {
+                    "key_name": "economic_diplomacy_info",
+                    "data_type": "object",
+                    "description": "Information about diplomatic efforts and economic implications of the trade agreements."
+                },
+                "import_export_balance": {
+                    "key_name": "import_export_balance",
+                    "data_type": "float",
+                    "description": "Balance between imports and exports in the context of international trade."
+                }
+            }
+        }
+    }
+}

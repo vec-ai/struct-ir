@@ -1,0 +1,9 @@
+bash ../tools/hfd.sh BAAI/bge-large-en-v1.5
+bash ../tools/hfd.sh hkunlp/instructor-large
+bash ../tools/hfd.sh jinaai/jina-embeddings-v3
+bash ../tools/hfd.sh nomic-ai/nomic-embed-text-v2-moe
+bash ../tools/hfd.sh facebook/drama-1b
+bash ../tools/hfd.sh intfloat/e5-mistral-7b-instruct
+bash ../tools/hfd.sh Alibaba-NLP/gte-Qwen2-7B-instruct
+bash ../tools/hfd.sh GritLM/GritLM-7B
+bash ../tools/hfd.sh nvidia/NV-Embed-v2
